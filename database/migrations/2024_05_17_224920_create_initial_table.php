@@ -62,16 +62,12 @@ return new class extends Migration
             $table->string('legal_name_company');
             $table->timestamp('email_verified_at')->nullable();
 
-            $table->boolean('terms_and_conditions');
-            $table->boolean('processing_of_personal_data');
+            $table->boolean('terms_and_conditions')->default(false);
+            $table->boolean('processing_of_personal_data')->default(false);
 
-            $table->string('pdf_single_tax_registry')->nullable();
-            $table->string('pdf_bank_certificate')->nullable();
-            $table->string('pdf_legal_representative_dni')->nullable();
-
-            //$table->string('address');
-            //$table->string('hour_open');
-            //$table->string('hour_close');
+            $table->string('pdf_single_tax_registry');
+            $table->string('pdf_bank_certificate');
+            $table->string('pdf_legal_representative_dni');
             
             $table->string('account_holder_name');
             $table->string('account_holder_lastname');

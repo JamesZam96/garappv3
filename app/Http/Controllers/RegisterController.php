@@ -73,6 +73,9 @@ class RegisterController extends Controller
         $lrd = "pdf_".time().".".$pdfLrd->guessExtension();
         $lrdPath = $pdfLrd->storeAs('uploads/pdfs', $lrd, 'public');
 
+        $terms_and_conditions = $request->has('terms_and_conditions') ? true : false;
+        $processing_of_personal_data = $request->has('processing_of_personal_data') ? true : false;
+
         CompanyModel::create([
             'user_id' => $user->id,
             'company_name' => $request->company_name,
@@ -84,8 +87,8 @@ class RegisterController extends Controller
             'legal_representative_email' => $request->legal_representative_email,
             'legal_name_company' => $request->legal_name_company,
 
-            'terms_and_conditions' => $request->terms_and_conditions,
-            'processing_of_personal_request' => $request->processing_of_personal_request,
+            'terms_and_conditions' => $terms_and_conditions,
+            'processing_of_personal_data' => $processing_of_personal_data,
 
             'pdf_single_tax_registry' => $strPath,
             'pdf_bank_certificate' => $bcPath,
