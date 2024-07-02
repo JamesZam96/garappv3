@@ -114,9 +114,6 @@ return new class extends Migration
             $table->string('type');
             $table->timestamps();
         });
-
-
-        
         // Tabla 'customers'
         /*Schema::create('customers', function (Blueprint $table) {
             $table->id();
@@ -156,7 +153,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('price');
-           
             $table->timestamps();
 
             $table->foreignId('company_id')->constrained()->onDelete('cascade');
