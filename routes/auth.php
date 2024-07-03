@@ -18,3 +18,7 @@ Route::post('/register/customer', [RegisterController::class, 'createCustomer'])
 // Registro de empresas
 Route::get('/register/company', [RegisterController::class, 'showRegistrationFormCompany'])->name('register.company');
 Route::post('/register/company', [RegisterController::class, 'createCompany'])->name('register.company.submit');
+
+// Registro de domiciliarios
+Route::get('/register/delivery', [RegisterController::class, 'showRegistrationFormDelivery'])->name('register.delivery');
+Route::post('/register/delivery', [RegisterController::class, 'createDelivery'])->name('register.delivery.submit');

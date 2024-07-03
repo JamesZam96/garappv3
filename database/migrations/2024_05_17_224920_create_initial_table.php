@@ -33,13 +33,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        //Tabla role_user
-        Schema::create('role_user', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('role_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
-        });
+        
 
         // Tabla locations
         Schema::create('locations', function (Blueprint $table) {
@@ -84,23 +78,17 @@ return new class extends Migration
         // Tabla 'delivery'
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lastname');
-            $table->string('phone');
-            $table->string('city');
-            $table->string('country');
             $table->string('gender');
-            $table->string('date_born');
+            $table->date('birth_date');
             $table->string('vehicle_type');
-            $table->string('dni');
             $table->string('dni_document_front');
             $table->string('dni_document_back');
-            $table->string('email')->unique();
-            $table->string('password')->unique();
-            $table->timestamps();
-            $table->string('driving_license')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('driving_license');
+            $table->string('transit_license');
+            $table->string('mandatory_insurance');
+            $table->string('profile_photo');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
 
         // Tabla 'vehicles'
@@ -115,7 +103,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-
+        
         
         // Tabla 'customers'
         /*Schema::create('customers', function (Blueprint $table) {
@@ -287,7 +275,6 @@ return new class extends Migration
         Schema::dropIfExists('order_product');
         Schema::dropIfExists('order_service');
         Schema::dropIfExists('roles');
-        Schema::dropIfExists('role_user');
         Schema::dropIfExists('companies');
         Schema::dropIfExists('locations');
         //Schema::dropIfExists('workshops');

@@ -47,9 +47,9 @@ class RoleModel extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
+        return $this->belongsToMany(User::class, 'roles_users', 'user_id', 'role_id');
     }
-
+    
     /**
      * Define una relación de muchos a muchos con el modelo CustomerModel.
      * Un rol puede estar asignado a múltiples clientes.
