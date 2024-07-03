@@ -1,69 +1,60 @@
-<div class="d-flex">
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">hola</h6>
-            <p class="card-text small mb-2 text-white">taller de yamaha</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
-    </div>
+@php
+$cards = [
+    [
+        'image' => asset('img/taller1.jfif'),
+        'title' => 'Ford',
+        'description' => 'Reparación y mantenimiento de vehículos Ford.',
+    ],
+    [
+        'image' => asset('img/taller2.jfif'),
+        'title' => 'Audi',
+        'description' => 'Servicio completo para autos Audi.',
+    ],
+    [
+        'image' => asset('img/taller3.jfif'),
+        'title' => 'Yamaha',
+        'description' => 'Especialistas en motocicletas Yamaha.',
+    ],
+    [
+        'image' => asset('img/taller4.jfif'),
+        'title' => 'Mercedes',
+        'description' => 'Mantenimiento y reparación de autos Mercedes.',
+    ],
+    [
+        'image' => asset('img/taller5.jfif'),
+        'title' => 'Chevrolet',
+        'description' => 'Taller especializado en vehículos Chevrolet.',
+    ],
+   
+];
+@endphp
 
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">audi</h6>
-            <p class="card-text small mb-2 text-white">taller de audi</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
-    </div>
-
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">mercedez</h6>
-            <p class="card-text small mb-2 text-white">taller de mercedez</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
-    </div>
-
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">ford</h6>
-            <p class="card-text small mb-2 text-white">taller de ford</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
-    </div>
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">kawazaki</h6>
-            <p class="card-text small mb-2 text-white">taller de kawazaki</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
-    </div>
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">nissan</h6>
-            <p class="card-text small mb-2 text-white">taller de nissan</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
-    </div>
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">suzuki</h6>
-            <p class="card-text small mb-2 text-white">taller de suzuki</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
-    </div>
-    <div class="card m-2" style="width: 10rem;">
-        <img src="https://assets.bridgestonetire.com/content/dam/consumer/bst/la/co/tips/2022/tecnologia-de-llantas/deportivo.jpg" class="card-img-top" alt="Llanta">
-        <div class="bg-dark p-2">
-            <h6 class="card-title mb-1 text-danger">akt</h6>
-            <p class="card-text small mb-2 text-white">taller de akt</p>
-            <a href="#" class="btn bg-danger btn-sm text-white">Ver</a>
-        </div>
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+        @foreach($cards as $card)
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ $card['image'] }}" class="card-img-top" alt="{{ $card['title'] }}">
+                    <div class="card-body bg-dark p-2">
+                        <h6 class="card-title mb-1 text-danger">{{ $card['title'] }}</h6>
+                        <p class="card-text small mb-2 text-white">{{ $card['description'] }}</p>
+                        <a href="#" class="btn btn-danger btn-sm">ver</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
+
+<style>
+    .card {
+        transition: transform 0.3s;
+    }
+    .card:hover {
+        transform: scale(1.05);
+    }
+    .card-img-top {
+        height: 150px;
+        object-fit: cover;
+    }
+</style>

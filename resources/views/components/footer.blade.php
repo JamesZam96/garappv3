@@ -1,52 +1,62 @@
-<footer class=" bg-black text-white py-4">
+<footer class="bg-black text-white py-4">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <h5 class="footer-heading text-danger">Categorías</h5>
+            <div class="col-md-4 mb-4">
+                <h5 class="footer-heading text-danger mb-3">Categorías</h5>
                 <ul class="list-unstyled footer-text">
-                    <li>+ Productos</li>
-                    <li>+ Promociones y ofertas</li>
-                    <li>+ Talleres cerca de mí</li>
-                    <li>+ Tiendas cerca de mí</li>
+                    <li><a href="#" class="footer-link">Productos</a></li>
+                    <li><a href="#" class="footer-link">Promociones y ofertas</a></li>
+                    <li><a href="#" class="footer-link">Talleres cerca de mí</a></li>
+                    <li><a href="#" class="footer-link">Tiendas cerca de mí</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <h5 class="footer-heading text-danger">Únete a Garapp</h5>
+            <div class="col-md-4 mb-4">
+                <h5 class="footer-heading text-danger mb-3">Únete a Garapp</h5>
                 <ul class="list-unstyled footer-text">
-                    <li>+ Registra tu taller</li>
-                    <li>+ Trabaja con nosotros</li>
-                    <li>+ Registra tu almacén</li>
-                    <li>+ Posiciones disponibles</li>
-                    <li>+ Quiero ser Garaapero</li>
-                    <li>+ Haz crecer tu marca</li>
-                    <li>+ Incrementa tus ventas</li>
-                    <li>+ Ordenar por Garaap</li>
+                    <li><a href="#" class="footer-link">Registra tu taller</a></li>
+                    <li><a href="#" class="footer-link">Trabaja con nosotros</a></li>
+                    <li><a href="#" class="footer-link">Registra tu almacén</a></li>
+                    <li><a href="#" class="footer-link">Posiciones disponibles</a></li>
+                    <li><a href="#" class="footer-link">Quiero ser Garaapero</a></li>
+                    <li><a href="#" class="footer-link">Haz crecer tu marca</a></li>
+                    <li><a href="#" class="footer-link">Incrementa tus ventas</a></li>
+                    <li><a href="#" class="footer-link">Ordenar por Garaap</a></li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <h5 class="footer-heading text-danger">Acerca de Garaap</h5>
+            <div class="col-md-4 mb-4">
+                <h5 class="footer-heading text-danger mb-3">Acerca de Garaap</h5>
                 <ul class="list-unstyled footer-text">
-                    <li>+ Blog</li>
-                    <li>+ Derecho de desistimiento</li>
-                    <li>+ SIC</li>
-                    <li>+ Términos y condiciones</li>
-                    <li>+ Garap</li>
-                    <li>+ Políticas de privacidad</li>
-                    <li>+ Procesamiento de Datos</li>
-                    <li>+ Contacto</li>
+                    <li><a href="#" class="footer-link">Blog</a></li>
+                    <li><a href="#" class="footer-link">Derecho de desistimiento</a></li>
+                    <li><a href="#" class="footer-link">SIC</a></li>
+                    <li><a href="#" class="footer-link">Términos y condiciones</a></li>
+                    <li><a href="#" class="footer-link">Garap</a></li>
+                    <li><a href="#" class="footer-link">Políticas de privacidad</a></li>
+                    <li><a href="#" class="footer-link">Procesamiento de Datos</a></li>
+                    <li><a href="#" class="footer-link">Contacto</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
-<!-- Scripts de Bootstrap -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-    integrity="sha384-Of3jc44xE3Wi2g1+g4lv6FRuOjcF8Ir3eFwt2B2xrrSNi3HD6PncIEJ6Bd3V/QJs"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh/jFcGi/iY4J8bJtmI3UksdQR+7Pzs8Vv0KK"
-    crossorigin="anonymous"></script>
+<style>
+    .footer-link {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: #dc3545; /* Color rojo de Bootstrap */
+        text-decoration: none;
+    }
+
+    .footer-text li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-heading {
+        font-weight: bold;
+    }
+</style>
