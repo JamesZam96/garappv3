@@ -1,27 +1,27 @@
 @php
 $cards = [
     [
-        'image' => asset('img/image1.jfif'),
+        'image' => asset('img/taller1.jfif'),
         'title' => 'Ford',
         'description' => 'Reparación y mantenimiento de vehículos Ford.',
     ],
     [
-        'image' => asset('img/image2.jfif'),
+        'image' => asset('img/taller2.jfif'),
         'title' => 'Audi',
         'description' => 'Servicio completo para autos Audi.',
     ],
     [
-        'image' => asset('img/image3.jfif'),
+        'image' => asset('img/taller3.jfif'),
         'title' => 'Yamaha',
         'description' => 'Especialistas en motocicletas Yamaha.',
     ],
     [
-        'image' => asset('img/image4.jfif'),
+        'image' => asset('img/taller4.jfif'),
         'title' => 'Mercedes',
         'description' => 'Mantenimiento y reparación de autos Mercedes.',
     ],
     [
-        'image' => asset('img/image5.jfif'),
+        'image' => asset('img/taller5.jfif'),
         'title' => 'Chevrolet',
         'description' => 'Taller especializado en vehículos Chevrolet.',
     ],
@@ -38,7 +38,7 @@ $cards = [
                     <div class="card-body bg-dark p-2">
                         <h6 class="card-title mb-1 text-danger">{{ $card['title'] }}</h6>
                         <p class="card-text small mb-2 text-white">{{ $card['description'] }}</p>
-                        <a href="#" class="btn btn-danger btn-sm">Ver</a>
+                        <a href="#" class="btn btn-danger btn-sm">ver</a>
                     </div>
                 </div>
             </div>
