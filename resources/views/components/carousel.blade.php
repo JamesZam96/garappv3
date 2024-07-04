@@ -38,7 +38,7 @@ $cards = [
                     <div class="card-body bg-dark p-2">
                         <h6 class="card-title mb-1 text-danger">{{ $card['title'] }}</h6>
                         <p class="card-text small mb-2 text-white">{{ $card['description'] }}</p>
-                        <a href="#" class="btn btn-danger btn-sm">Ver</a>
+                        <a href="/ProductoServicioIngreso" class="btn btn-danger btn-sm">Ver</a>
                     </div>
                 </div>
             </div>
