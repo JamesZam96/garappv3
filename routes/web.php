@@ -2,13 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('Inicio_ingreso');
-});
 
-Route::get('/ProductoServicioIngreso', function(){
-    return view('ProductoServicioIngreso');
-});
+
 
 require __DIR__ . '/profile.php';
 require __DIR__ . '/vehicles.php';
@@ -22,6 +17,10 @@ require __DIR__ . '/services.php';
 require __DIR__ . '/bills.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/workshop.php';
+
+require __DIR__ . '/inicio_ingreso.php';
+require __DIR__ . '/inicio_usuario.php';
+
 
 
 

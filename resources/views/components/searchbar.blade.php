@@ -3,10 +3,9 @@
         ≡
     </button>
     <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Iniciar sesion</a></li>
     <li><a class="dropdown-item" href="/register">Registrarse</a></li>
-    <li><a class="dropdown-item" href="#">Secciones</a></li>
-    <li><a class="dropdown-item" href="#">almacenes</a></li>
-    <li><a class="dropdown-item" href="#">Talleres</a></li>
+    <li><a class="dropdown-item" href="/ProductoServicioIngreso">Secciones</a></li>
+    <li><a class="dropdown-item" href="/AlmacenIngreso">almacenes</a></li>
+    <li><a class="dropdown-item" href="/TallerIngreso">Talleres</a></li>
     </ul>
     </div>
