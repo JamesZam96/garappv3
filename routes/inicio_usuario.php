@@ -14,3 +14,6 @@ Route::get('/AlmacenSession', function(){
 Route::get('/ProductoServicioSession', function(){
     return view('InicioUsuario.ProductoServicioSession');
 });
+Route::get('/GestionPago', function(){
+    return view('InicioUsuario.GestionPago');
+});
