@@ -1,29 +1,29 @@
 @php
 $cards = [
     [
-        'image' => asset('img/taller1.jfif'),
-        'title' => 'Ford',
-        'description' => 'Reparación y mantenimiento de vehículos Ford.',
+        'image' => asset('img/producto1.jfif'),
+        'title' => 'liquido',
+        'description' => '35.000$',
     ],
     [
-        'image' => asset('img/taller2.jfif'),
-        'title' => 'Audi',
-        'description' => 'Servicio completo para autos Audi.',
+        'image' => asset('img/producto2.jfif'),
+        'title' => 'llatas',
+        'description' => '60.000$',
     ],
     [
-        'image' => asset('img/taller3.jfif'),
-        'title' => 'Yamaha',
-        'description' => 'Especialistas en motocicletas Yamaha.',
+        'image' => asset('img/producto3.jfif'),
+        'title' => 'liquido de frenos',
+        'description' => '35.000$',
     ],
     [
-        'image' => asset('img/taller4.jfif'),
-        'title' => 'Mercedes',
-        'description' => 'Mantenimiento y reparación de autos Mercedes.',
+        'image' => asset('img/producto4.jfif'),
+        'title' => 'carburador',
+        'description' => '150.000$',
     ],
     [
-        'image' => asset('img/taller5.jfif'),
-        'title' => 'Chevrolet',
-        'description' => 'Taller especializado en vehículos Chevrolet.',
+        'image' => asset('img/producto5.jfif'),
+        'title' => 'filtro de aire',
+        'description' => '12.000$',
     ],
    
 ];
@@ -38,7 +38,7 @@ $cards = [
                     <div class="card-body bg-dark p-2">
                         <h6 class="card-title mb-1 text-danger">{{ $card['title'] }}</h6>
                         <p class="card-text small mb-2 text-white">{{ $card['description'] }}</p>
-                        <a href="/ProductoServicioIngreso" class="btn btn-danger btn-sm">ver</a>
+                        <a href="#" class="btn btn-danger btn-sm">Agregar</a>
                     </div>
                 </div>
             </div>
