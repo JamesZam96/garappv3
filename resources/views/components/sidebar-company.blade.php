@@ -17,8 +17,12 @@
                     class="fa-regular fa-clock me-2"></i>Horarios</a>
             <a href="#" class="list-group-item bg-transparent main-text fw-bold"><i
                     class="fa-solid fa-list-ol me-2"></i>Ordenes</a>
-            <a href="#" class="list-group-item bg-transparent main-text fw-bold mb-2"><i
+            <a href="{{route('logout.company')}}" class="list-group-item bg-transparent main-text fw-bold mb-2" 
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                     class="fa-solid fa-arrow-right-from-bracket me-2"></i>Cerrar sesión</a>
+                <form id="logout-form" action="{{ route('logout.company') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
     </div>
 </div>
 

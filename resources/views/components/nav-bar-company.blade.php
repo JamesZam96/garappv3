@@ -13,7 +13,12 @@
                     <i class="fas fa-user me-2"></i>John Doe
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                    <li><a class="dropdown-item" href="{{route('logout.company')}}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                    <form id="logout-form" action="{{ route('logout.company') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    </li>
                 </ul>
             </li>
         </ul>

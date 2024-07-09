@@ -23,10 +23,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $this->call([
+            RoleSeeder::class
+        ]);
         /**
          * Crear permisos si la tabla 'permissions' está vacía.
          */
-        if (!PermissionsModel::count()) {
+        /*if (!PermissionsModel::count()) {
             $permissions = [
                 'control_total' => 'Control total',
                 'borrar' => 'Borrar recursos',
@@ -47,12 +51,12 @@ class DatabaseSeeder extends Seeder
             foreach ($permissions as $name => $description) {
                 PermissionsModel::create(['name' => $name, 'description' => $description]);
             }
-        }
+        }*/
 
         /**
          * Crear roles si la tabla 'roles' está vacía.
          */
-        if (!RoleModel::count()) {
+        /*if (!RoleModel::count()) {
             $adminRole = RoleModel::create(['name' => 'administrador', 'description' => 'Control total sobre todos los recursos']);
             $customerRole = RoleModel::create(['name' => 'cliente', 'description' => 'Permisos limitados para clientes']);
             $warehouseRole = RoleModel::create(['name' => 'almacen', 'description' => 'Permisos para el personal de almacén']);
@@ -90,12 +94,12 @@ class DatabaseSeeder extends Seeder
                 'ver_productos', 'ver_categorias', 'ver_servicios'
             ])->pluck('id');
             $visitorRole->permissions()->attach($visitorPermissions);
-        }
+        }*/
 
         /**
          * Crear un usuario administrador por defecto si la tabla 'users' está vacía.
          */
-        if (!User::count()) {
+        /*if (!User::count()) {
             $data = [
                 'name' => 'admin',
                 'email' => 'admin@admin.com',
@@ -105,6 +109,6 @@ class DatabaseSeeder extends Seeder
 
             $adminRole = RoleModel::where('name', 'administrador')->first();
             $admin->roles()->attach($adminRole->id);
-        }
+        }*/
     }
 }
