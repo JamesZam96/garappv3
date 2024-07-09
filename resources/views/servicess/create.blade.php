@@ -4,40 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pagina para registrar un servicio</title>
+    <title>Dashboard | Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/sidebar-company.css') }}">
 </head>
 <body>
-    <h1>Aqui podrás registrar un nuevo servicio</h1>
-    <form action="{{ route('services.store') }}" method="POST">
-        @csrf
-        <label>Nombre del servicio:
-            <br>
-            <input type="text" name="name" value="{{ old('name') }}">
-        </label>
-        <br>
-        @error('name')
-            <span>{{ $message }}</span>
-        @enderror
-        <br>
-        <label>Descripción del servicio:
-            <br>
-            <input type="text" name="description" value="{{ old('description') }}">
-        </label>
-        <br>
-        @error('description')
-            <span>{{ $message }}</span>
-        @enderror
-        <br>
-        <label>Precio del servicio:
-            <br>
-            <input type="number" name="price" value="{{ old('price') }}">
-        </label>
-        <br>
-        @error('price')
-            <span>{{ $message }}</span>
-        @enderror
-        <br><br>
-        <button type="submit">Crear servicio</button>
-    </form>
+    <x-sidebar-company/>    
+    <div id="page-content-wrapper">
+        <x-nav-bar-company/>
+        <div class="container-fluid px-4">
+            <x-services-form :categories="$categories"/>
+        </div>   
+    </div>
+    <script src="{{asset('js/sidebar-company.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

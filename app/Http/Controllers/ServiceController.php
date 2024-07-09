@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\DataServices;
+use App\Models\CategoryModel;
 use App\Models\ServiceModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
@@ -37,6 +40,12 @@ class ServiceController extends Controller
         $services = $this->dataServices->getAll();
         return view('servicess.index', compact('services'));
     }
+
+    public function create(){
+        $categories = CategoryModel::all();
+        return view('servicess.create', compact('categories'));
+    }
+
     /**
      * Almacena un nuevo servicio en la base de datos.
      *
@@ -45,10 +54,17 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->isMethod('get')) {
-            return view('servicess.create');
-        }
-        $service = $this->dataServices->create($request->all());
+        $serviceImg = $request->file('image');
+        $serviceImage = "img_".Str::uuid().".".$serviceImg->guessExtension();
+        $serviceImagePath = $serviceImg->storeAs('uploads/serviceImage', $serviceImage, 'public');
+
+        $service = ServiceModel::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $serviceImagePath,
+            'category_id' => $request->category_id
+        ]);
         return redirect()->route('services.index');
     }
 
@@ -63,6 +79,11 @@ class ServiceController extends Controller
         $service = $this->dataServices->getById($id);
         return view('servicess.show', compact('service'));
     }
+
+    public function edit(ServiceModel $service){
+        $categories = CategoryModel::all();
+        return view('servicess.edit', compact('service','categories'));
+    }
     /**
      * Actualiza los datos de un servicio en la base de datos.
      *
@@ -72,11 +93,32 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->isMethod('get')) {
-            $service = $this->dataServices->getById($id);
-            return view('servicess.edit', compact('service'));
+        // Encontrar el producto por su ID
+        $service = ServiceModel::findOrFail($id);
+
+        // Manejar la actualización de la imagen
+        if ($request->hasFile('image')) {
+            // Eliminar la imagen anterior si existe
+            if ($service->image) {
+                Storage::disk('public')->delete($service->image);
+            }
+
+            // Almacenar la nueva imagen
+            $serviceImg = $request->file('image');
+            $serviceImage = "img_" . Str::uuid() . "." . $serviceImg->guessExtension();
+            $serviceImagePath = $serviceImg->storeAs('uploads/serviceImage', $serviceImage, 'public');
+
+            // Actualizar el campo de imagen en el producto
+            $service->image = $serviceImagePath;
         }
-        $service = $this->dataServices->update($id, $request->all());
+
+        // Actualizar los demás campos del producto
+        $service->name = $request->name;
+        $service->description = $request->description;
+        $service->price = $request->price;
+        $service->category_id = $request->category_id;
+        $service->save();
+        /*$service = $this->dataServices->update($id, $request->all());*/
         if (!$service) {
             abort(404, 'Service not found');
         }
@@ -92,6 +134,10 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = $this->dataServices->delete($id);
+        // Eliminar la imagen asociada si existe
+        if ($service->image) {
+            Storage::disk('public')->delete($service->image);
+        }
         if (!$service) {
             abort(404, 'Service not found');
         }

@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('Inicio_ingreso');
 });
 
+Route::get('/admin', function () {
+    return view('company.home');
+});
+
 require __DIR__ . '/profile.php';
 require __DIR__ . '/vehicles.php';
 require __DIR__ . '/orders.php';

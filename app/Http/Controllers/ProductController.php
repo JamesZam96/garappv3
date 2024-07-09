@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Http\Services\DataServices;
+use App\Models\CategoryModel;
 use App\Models\Produc;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -37,6 +40,11 @@ class ProductController extends Controller
         $products = $this->dataServices->getAll();
         return view('products.index', compact('products'));
     }
+
+    public function create(){
+        $categories = CategoryModel::all();
+        return view('products.create', compact('categories'));
+    }
     /**
      * Almacena un nuevo produc en la base de datos.
      *
@@ -45,10 +53,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->isMethod('get')) {
-            return view('products.create');
-        }
-        $produc = $this->dataServices->create($request->all());
+        $productImg = $request->file('image');
+        $productImage = "img_".Str::uuid().".".$productImg->guessExtension();
+        $productImagePath = $productImg->storeAs('uploads/productImage', $productImage, 'public');
+
+        $product = ProductModel::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'image' => $productImagePath,
+            'category_id' => $request->category_id
+        ]);
+        /*$product = $this->dataServices->update($id, $request->all());
+        if (!$product) {
+            abort(404, 'products not found');
+        }*/
         return redirect()->route('products.index');
     }
 
@@ -63,6 +83,11 @@ class ProductController extends Controller
         $product = $this->dataServices->getById($id);
         return view('products.show', compact('product'));
     }
+
+    public function edit(ProductModel $product){
+        $categories = CategoryModel::all();
+        return view('products.edit', compact('product','categories'));
+    }
     /**
      * Actualiza los datos de un produc en la base de datos.
      *
@@ -72,12 +97,35 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($request->isMethod('get')) {
-            $product = $this->dataServices->getById($id);
-            return view('products.edit', compact('product'));
+
+        // Encontrar el producto por su ID
+        $product = ProductModel::findOrFail($id);
+
+        // Manejar la actualización de la imagen
+        if ($request->hasFile('image')) {
+            // Eliminar la imagen anterior si existe
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            // Almacenar la nueva imagen
+            $productImg = $request->file('image');
+            $productImage = "img_" . Str::uuid() . "." . $productImg->guessExtension();
+            $productImagePath = $productImg->storeAs('uploads/productImage', $productImage, 'public');
+
+            // Actualizar el campo de imagen en el producto
+            $product->image = $productImagePath;
         }
-        $produc = $this->dataServices->update($id, $request->all());
-        if (!$produc) {
+
+        // Actualizar los demás campos del producto
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->category_id = $request->category_id;
+        $product->save();
+        /*$product = $this->dataServices->update($id, $request->all());*/
+        if (!$product) {
             abort(404, 'products not found');
         }
         return redirect()->route('products.index');
@@ -91,9 +139,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $produc = $this->dataServices->delete($id);
-        if (!$produc) {
-            abort(404, 'Produc not found');
+        $product = $this->dataServices->delete($id);
+        // Eliminar la imagen asociada si existe
+        if ($product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
+        if (!$product) {
+            abort(404, 'Product not found');
         }
         return redirect()->route('products.index');
     }
