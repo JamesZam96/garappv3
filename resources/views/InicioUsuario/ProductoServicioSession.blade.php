@@ -10,9 +10,9 @@
 <body>
     <x-navbar-session />
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Productos disponibles"></x-round-icon>
-    <x-product-card-session />
+    <x-product-card-session :products="$products"/>
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Servicios disponibles"></x-round-icon>
-   <x-servicio-card-session />
+    <x-servicio-card-session :services="$services"/>
     <x-google-map :api-key="config('services.google.maps_api_key')" />
     <x-footer />
 

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-black">
     <x-searchbar />
     <div class="container-fluid">
-        <a class="navbar-brand text-danger" href="/Inicio_ingreso">Garapp</a>
+        <a class="navbar-brand text-danger" href="/">Garapp</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,7 +11,7 @@
                     <a class="nav-link active text-light" aria-current="page" href="#">Ubicación</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Ingreso</a>
+                    <a class="nav-link text-light" href="/login">Iniciar sesion</a>
                 </li>
             </ul>
             <form class="d-flex flex-grow-1 mx-lg-4 my-2 my-lg-0" role="search">

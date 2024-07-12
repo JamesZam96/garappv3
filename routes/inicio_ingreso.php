@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/Inicio_ingreso', function () {
+Route::get('/', function () {
     return view('Inicio.Inicio_ingreso');
 });
 

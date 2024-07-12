@@ -1,13 +1,18 @@
 <?php
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
 
 
 Route::get('/admin', function () {
+    if (!Auth::user()->roles->contains('name', 'company')) {
+        return redirect()->route('login.form.company');
+    }
     return view('company.home');
-})->name('home.company');
+})->name('home.company')->middleware('company.auth');
 
 require __DIR__ . '/profile.php';
 require __DIR__ . '/vehicles.php';

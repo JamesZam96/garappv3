@@ -10,11 +10,8 @@
 </head>
 <body>
     <x-navbar />
-    <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Almacenes"></x-round-icon>
+    <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Almacenes y talleres cerca de ti"></x-round-icon>
     <x-carusel-almacen-component />
-    <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Los 10 más elegidos"></x-round-icon>
-    <x-carusel-almacen-component />
-    <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Talleres cerca de ti"></x-round-icon>
     <x-carousel />
     <x-footer />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

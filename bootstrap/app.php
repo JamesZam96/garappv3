@@ -13,6 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'verify.role' => \App\Http\Middleware\VerifyRole::class,
+            'company.auth' => \App\Http\Middleware\RedirectIfNotAuthenticatedCompany::class,
+            'customer.auth' => \App\Http\Middleware\RedirectIfNotAuthenticatedCustomer::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

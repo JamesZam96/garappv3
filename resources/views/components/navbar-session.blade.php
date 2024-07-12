@@ -10,9 +10,6 @@
                 <li class="nav-item">
                     <a class="nav-link active text-light" aria-current="page" href="#">Ubicación</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Ingreso</a>
-                </li>
             </ul>
             <form class="d-flex flex-grow-1 mx-lg-4 my-2 my-lg-0" role="search">
                 <input class="form-control me-2 flex-grow-1" type="search" placeholder="Buscar productos, servicios" aria-label="Search">
