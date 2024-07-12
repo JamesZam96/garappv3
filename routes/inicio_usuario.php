@@ -25,3 +25,9 @@ Route::get('/ProductoServicioSession', function(){
     $services = ServiceModel::all();
     return view('InicioUsuario.ProductoServicioSession', compact('products','services'));
 });
+Route::get('/GestionPago', function(){
+    return view('InicioUsuario.GestionPago');
+});
+Route::get('/GestionPago', function(){
+    return view('InicioUsuario.GestionPago');
+});
