@@ -43,10 +43,11 @@
                 <p class="text-light col-10">Costo de envio  </p><p class="text-light col-2">$0</p>
                 <p class="text-light col-10">Propina  </p><p class="text-light col-2">$0</p>
                 <p class="text-light col-10">Total  </p><p class="text-light col-2">$0</p>
-                <button type="button" class="btn btn-danger text-black mx-2"><strong>Hacer Pedido</strong></button>
+                <button type="button" class="btn btn-danger text-black mx-2" data-bs-toggle="modal" data-bs-target="#modalPedidoConfirmado"><strong>Hacer Pedido</strong><x-modal-pago /></button>
               </div>
             </div>
       </section>
+      
       <section class="d-flex justify-content-center m-4">
               <div class="bg-black text-light w-50 p-4">
                 <div class="d-flex justify-content-between p-2">
@@ -55,7 +56,7 @@
                 </div>
                 <div class="d-flex justify-content-between p-2">
                   <p>Agregar método de pago: </p>
-                  <button type="button" class="btn btn-light w-50 text-start"><img width="25px" src="{{asset('icons/tarjeta.png')}}" alt="icono tarjeta de pago">Agregar tarjeta de crédito o débito</button>
+                  <button type="button" class="btn btn-light w-50 text-start" data-bs-toggle="modal" data-bs-target="#modalPago"><img width="25px" src="{{asset('icons/tarjeta.png')}}" alt="icono tarjeta de pago">Agregar tarjeta debito credito<x-modal-pago /> </button>
                 </div>
                 <div class=" p-2 text-center">
                   <p>Añade una propina: </p>
