@@ -31,12 +31,12 @@ $cards = [
 
 <div class="container-fluid">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
-        @foreach($cards as $index => $card)
+        @foreach($products as $index => $card)
             <div class="col">
                 <div class="card h-100">
-                    <img src="{{ $card['image'] }}" class="card-img-top" alt="{{ $card['title'] }}">
+                    <img src="{{ $card['image'] }}" class="card-img-top" alt="{{ $card['name'] }}">
                     <div class="card-body bg-dark p-2">
-                        <h6 class="card-title mb-1 text-danger">{{ $card['title'] }}</h6>
+                        <h6 class="card-title mb-1 text-danger">{{ $card['name'] }}</h6>
                         <p class="card-text small mb-2 text-white">{{ $card['description'] }}</p>
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal{{ $index }}">
                             Agregar
@@ -50,11 +50,11 @@ $cards = [
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modalLabel{{ $index }}">{{ $card['title'] }}</h5>
+                            <h5 class="modal-title" id="modalLabel{{ $index }}">{{ $card['name'] }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <img src="{{ $card['image'] }}" class="img-fluid mb-3" alt="{{ $card['title'] }}">
+                            <img src="{{ $card['image'] }}" class="img-fluid mb-3" alt="{{ $card['name'] }}">
                             <p>{{ $card['description'] }}</p>
                             <p>¿Estás seguro de que deseas agregar este producto?</p>
                         </div>

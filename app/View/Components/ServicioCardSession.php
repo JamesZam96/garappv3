@@ -8,12 +8,14 @@ use Illuminate\Contracts\View\View;
 
 class ServicioCardSession extends Component
 {
+    public $services;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($services)
     {
         //
+        $this->services = $services;
     }
 
     /**

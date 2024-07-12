@@ -7,6 +7,7 @@ use App\Models\DeliveryModel;
 use App\Models\RoleModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -105,8 +106,8 @@ class RegisterController extends Controller
 
         $companyRole = RoleModel::where('name', 'company')->first();
         $user->roles()->attach($companyRole);
-        //Auth::login($user);
-        return response('Empresa registrada correctamente');
+        Auth::login($user);
+        return redirect()->route('home.company');
     }
 
     public function createDelivery(Request $request){
