@@ -43,10 +43,10 @@ class ProductModel extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function categories()
+    /*public function categories()
     {
         return $this->belongsToMany(CategoryModel::class, 'category_product', 'product_id', 'category_id');
-    }
+    }*/
 
     /**
      * Relación muchos a muchos con el modelo OrderModel.
@@ -58,5 +58,9 @@ class ProductModel extends Model
     public function orders()
     {
         return $this->belongsToMany(OrderModel::class, 'order_product', 'product_id', 'order_id');
+    }
+
+    public function category(){
+        return $this->belongsTo(CategoryModel::class);
     }
 }

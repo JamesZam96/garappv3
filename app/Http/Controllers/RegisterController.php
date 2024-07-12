@@ -161,7 +161,7 @@ class RegisterController extends Controller
             'driving_license' => $dlPath,
             'transit_license' => $tlPath,
             'mandatory_insurance' => $miPath,
-            'profile_photo' => $request->profile_photo,
+            'profile_photo' => $ppPath,
             'user_id' => $user->id
         ]);
         

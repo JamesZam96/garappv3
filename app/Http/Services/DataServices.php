@@ -38,7 +38,7 @@ class DataServices {
      */
     public function getAll()
     {
-        return $this->model->orderBy('id', 'desc')->paginate();
+        return $this->model->orderBy('id', 'asc')->paginate();
     }
 
     /**

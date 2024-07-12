@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lista de Servicios</title>
+    <title>Dashboard | Servicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/sidebar-company.css') }}">
 </head>
 <body>
-    <h1>Lista de Servicios</h1>
-    <a href="/services/create">Crear un nuevo servicio</a>
-    <ul>
-        @foreach ($services as $service)
-            <li>
-                <a href="{{ route('services.show', $service->id) }}">{{ $service->name }}</a>
-                <p>Descripción: {{ $service->description }}</p>
-                <p>Precio: {{ $service->price }}</p>
-            </li>
-        @endforeach
-    </ul>
-    {{ $services->links() }}
+    <x-sidebar-company/>
+    <div id="page-content-wrapper">
+        <x-nav-bar-company/>
+        <div class="container-fluid px-4">
+            <x-services-table :services="$services"/>
+        </div>   
+    </div>
+    <script src="{{asset('js/sidebar-company.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

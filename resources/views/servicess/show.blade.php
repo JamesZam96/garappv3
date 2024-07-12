@@ -4,22 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Detalles del Servicio</title>
+    <title>Dashboard | Servicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/sidebar-company.css') }}">
 </head>
 <body>
-    <h1>Detalles del Servicio</h1>
-    <p>Nombre: {{ $service->name }}</p>
-    <p>Descripción: {{ $service->description }}</p>
-    <p>Precio: {{ $service->price }}</p>
-    <a href="{{ route('services.index') }}">Ir a la página principal</a>
-    <br><br>
-    <a href="{{ route('services.update', $service) }}">Editar</a>
-
-    <form action="{{ route('services.destroy', $service) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <br>
-        <button type="submit">Eliminar</button>
-    </form>   
+    <x-sidebar-company/>
+    <div id="page-content-wrapper">
+        <x-nav-bar-company/>
+        <div class="container-fluid px-4">
+            <x-show-service :service="$service"/>
+        </div>   
+    </div>
+    <script src="{{asset('js/sidebar-company.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

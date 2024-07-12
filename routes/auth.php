@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,14 @@ Route::post('/register/company', [RegisterController::class, 'createCompany'])->
 // Registro de domiciliarios
 Route::get('/register/delivery', [RegisterController::class, 'showRegistrationFormDelivery'])->name('register.delivery');
 Route::post('/register/delivery', [RegisterController::class, 'createDelivery'])->name('register.delivery.submit');
+
+// Login cliente
+Route::get('login/customer', [LoginController::class, 'showLoginFormCustomer'])->name('login.form.customer');
+Route::post('login/customer', [LoginController::class, 'loginCustomer'])->name('login.customer');
+
+// Login empresa
+Route::get('login/company', [LoginController::class, 'showLoginFormCompany'])->name('login.form.company');
+Route::post('login/company', [LoginController::class, 'loginCompany'])->name('login.company');
+
+// Logout empresa
+Route::post('/logout/company', [LoginController::class, 'logoutCompany'])->name('logout.company');

@@ -140,10 +140,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->integer('price');
+            $table->bigInteger('price');
+            $table->bigInteger('quantity');
+            $table->string('image');
             $table->timestamps();
-
-            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            //$table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
         });
 
@@ -179,12 +180,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->integer('price');
-            $table->unsignedBigInteger('company_id')->nullable();
+            $table->bigInteger('price');
+            $table->string('image');
             $table->timestamps();
-
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');
-
+            //$table->foreignId('company_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
         });
 
         // Tabla 'orders'

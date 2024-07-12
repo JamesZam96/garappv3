@@ -47,4 +47,8 @@ class ServiceModel extends Model
     {
         return $this->belongsToMany(WorkshopsModel::class, 'workshops_id');
     }
+
+    public function category(){
+        return $this->belongsTo(CategoryModel::class);
+    }
 }

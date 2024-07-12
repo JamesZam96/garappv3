@@ -33,4 +33,12 @@ class CategoryModel extends Model
     {
         return $this->belongsToMany(ProductModel::class, 'category_product', 'category_id', 'product_id');
     }
+
+    public function service(){
+        return $this->hasOne(ServiceModel::class) ;
+    }
+
+    public function product(){
+        return $this->hasOne(ProductModel::class) ;
+    }
 }
