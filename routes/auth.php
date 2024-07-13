@@ -5,12 +5,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/auths', [AuthController::class, 'index'])->name('auths.index');
-// Route::get('/register', [AuthController::class, 'create'])->name('auths.create');
-// Route::post('/register', [AuthController::class , 'register'])->name('auths.store');
-Route::match(['get', 'post'], '/register', [AuthController::class, 'register'])->name('auths.register');
-Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('auths.login');
-Route::post('/logout', [AuthController::class, 'logout'])->name('auths.logout')->middleware('auth');
 
 // Registro de clientes
 Route::get('/register/customer', [RegisterController::class, 'showRegistrationFormCustomer'])->name('register.customer');
@@ -34,3 +28,6 @@ Route::post('login/company', [LoginController::class, 'loginCompany'])->name('lo
 
 // Logout empresa
 Route::post('/logout/company', [LoginController::class, 'logoutCompany'])->name('logout.company');
+
+// Logout customer
+Route::post('/logout/customer', [LoginController::class, 'logoutCustomer'])->name('logout.customer');

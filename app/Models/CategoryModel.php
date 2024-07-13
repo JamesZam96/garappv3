@@ -35,10 +35,10 @@ class CategoryModel extends Model
     }
 
     public function service(){
-        return $this->hasOne(ServiceModel::class) ;
+        return $this->hasMany(ServiceModel::class) ;
     }
 
     public function product(){
-        return $this->hasOne(ProductModel::class) ;
+        return $this->hasMany(ProductModel::class) ;
     }
 }

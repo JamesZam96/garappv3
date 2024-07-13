@@ -59,16 +59,4 @@ class OrderModel extends Model
     {
         return $this->belongsToMany(ServiceModel::class, 'order_service', 'order_id', 'service_id');
     }
-
-    /**
-     * Relación uno a muchos con el modelo BillModel.
-     *
-     * Un pedido puede tener muchas facturas.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function bills()
-    {
-        return $this->hasMany(BillModel::class, 'order_id');
-    }
 }

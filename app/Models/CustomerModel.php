@@ -48,24 +48,4 @@ class CustomerModel extends Model
     {
         return $this->hasMany(OrderModel::class, 'customer_id');
     }
-
-    /**
-     * Define una relación uno a muchos con el modelo BillModel.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function bills()
-    {
-        return $this->hasMany(BillModel::class, 'customer_id');
-    }
-
-    /**
-     * Define una relación de pertenencia con el modelo RoleModel.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function role()
-    {
-        return $this->belongsToMany(RoleModel::class, 'roles_customers', 'role_id', 'customer_id');
-    }
 }

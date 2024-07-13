@@ -29,17 +29,6 @@ class RoleModel extends Model
     protected $guarded = [];
 
     /**
-     * Define una relación de muchos a muchos con el modelo PermissionsModel.
-     * Un rol puede tener múltiples permisos.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    /*public function permissions()
-    {
-        return $this->belongsToMany(PermissionsModel::class, 'roles_permissions', 'role_id', 'permission_id');
-    }*/
-
-    /**
      * Define una relación de muchos a muchos con el modelo User.
      * Un rol puede estar asignado a múltiples usuarios.
      *
@@ -50,47 +39,10 @@ class RoleModel extends Model
         return $this->belongsToMany(User::class, 'roles_users', 'user_id', 'role_id');
     }
     
-    /**
-     * Define una relación de muchos a muchos con el modelo CustomerModel.
-     * Un rol puede estar asignado a múltiples clientes.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    /*public function customers()
-    {
-        return $this->belongsToMany(CustomerModel::class, 'roles_customers', 'role_id', 'customer_id');
-    }*/
 
-    /**
-     * Define una relación de muchos a muchos con el modelo DeliveryModel.
-     * Un rol puede estar asignado a múltiples repartidores.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    /*public function deliveries()
-    {
-        return $this->belongsToMany(DeliveryModel::class, 'roles_deliveries', 'role_id', 'delivery_id');
-    }*/
 
-    /**
-     * Define una relación de muchos a muchos con el modelo WarehouseModel.
-     * Un rol puede estar asignado a múltiples almacenes.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    /*public function warehouses()
-    {
-        return $this->belongsToMany(WarehouseModel::class, 'roles_warehouses', 'role_id', 'warehouse_id');
-    }*/
+    
 
-    /**
-     * Define una relación de muchos a muchos con el modelo WorkshopsModel.
-     * Un rol puede estar asignado a múltiples talleres.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    /*public function workshops()
-    {
-        return $this->belongsToMany(WorkshopsModel::class, 'roles_workshops', 'role_id', 'workshop_id');
-    }*/
+    
+ 
 }

@@ -32,15 +32,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = [];
-    /**
-     * Define una relación de pertenencia con el modelo RoleModel.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    /*public function profile()
-    {
-        return $this->belongsTo(ProfileModel::class, 'user_id');
-    }*/
     
     /**
      * Relación uno a muchos con el modelo DeliveryModel.
@@ -64,14 +55,8 @@ class User extends Authenticatable
         return $this->hasOne(CompanyModel::class, 'user_id');
     }
     
-    /*public function hasPermission($permission)
+    public function cartItems()
     {
-        foreach ($this->roles as $role) {
-            if ($role->permissions->contains('name', $permission)) {
-                return true;
-            }
-        }
-        return false;
-    }*/
-    
+        return $this->hasMany(CartItem::class);
+    }
 }

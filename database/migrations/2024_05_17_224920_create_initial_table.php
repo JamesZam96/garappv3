@@ -11,29 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Tabla 'people'
-        /*Schema::create('profiles', function (Blueprint $table) {
-            $table->id();
-            $table->string('lastname');
-            $table->string('profile_img_url');
-            $table->string('address');
-            $table->integer('phoneNumber');
-            $table->string('type_dni');
-            $table->string('dni');
-            $table->unsignedBigInteger('user_id');
-            $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-
-        });*/
-
         //Tabla roles
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->timestamps();
         });
-
-        
 
         // Tabla locations
         Schema::create('locations', function (Blueprint $table) {
@@ -102,30 +85,7 @@ return new class extends Migration
             $table->string('type');
             $table->timestamps();
         });
-        // Tabla 'customers'
-        /*Schema::create('customers', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->timestamps();
 
-            // Definiendo claves foráneas
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-        });*/
-
-        // Tabla 'warehouses'
-        /*Schema::create('warehouses', function (Blueprint $table) {
-            $table->id();
-            $table->integer('nit');
-            $table->string('name');
-            $table->string('address');
-            $table->string('email');
-            $table->bigInteger('phone');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-
-        });*/
 
         // Tabla 'categories'
         Schema::create('categories', function (Blueprint $table) {
@@ -159,21 +119,6 @@ return new class extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
-
-         // Tabla 'workshops'
-        /*Schema::create('workshops', function (Blueprint $table) {
-            $table->id();
-            $table->integer('nit');
-            $table->string('name');
-            $table->string('address');
-            $table->string('email');
-            $table->bigInteger('phone');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-
-        });*/
 
         // Tabla 'services'
         Schema::create('services', function (Blueprint $table) {
@@ -223,33 +168,6 @@ return new class extends Migration
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
         });
 
-        // Tabla 'bills'
-        /*Schema::create('bills', function (Blueprint $table) {
-            $table->id();
-            $table->date('date');
-            $table->double('totalprice');
-            $table->unsignedBigInteger('customer_id')->nullable();
-            $table->unsignedBigInteger('order_id')->nullable();
-            $table->timestamps();
-
-            // Definiendo claves foráneas
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
-        });*/
-
-        // Tabla 'delivery'
-        /*Schema::create('deliveries', function (Blueprint $table) {
-            $table->id();
-            $table->integer('licenseNumber');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('vehicle_id')->nullable();
-            $table->timestamps();
-
-            // Definiendo claves foráneas
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('cascade')->onUpdate('cascade');
-        });*/
-
     }
 
     /**
@@ -257,15 +175,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //Schema::dropIfExists('profiles');
+        
         Schema::dropIfExists('vehicles');
-        //Schema::dropIfExists('customers');
-        //Schema::dropIfExists('warehouses');
         Schema::dropIfExists('products');
         Schema::dropIfExists('services');
         Schema::dropIfExists('categories');
         Schema::dropIfExists('orders');
-        //Schema::dropIfExists('bills');
         Schema::dropIfExists('deliveries');
         Schema::dropIfExists('category_product');
         Schema::dropIfExists('order_product');
@@ -273,6 +188,5 @@ return new class extends Migration
         Schema::dropIfExists('roles');
         Schema::dropIfExists('companies');
         Schema::dropIfExists('locations');
-        //Schema::dropIfExists('workshops');
     }
 };

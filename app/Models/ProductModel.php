@@ -25,30 +25,6 @@ class ProductModel extends Model
     protected $guarded = [];
 
     /**
-     * Relación de pertenencia con el modelo WarehouseModel.
-     *
-     * Un producto pertenece a un almacén.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function warehouse()
-    {
-        return $this->belongsTo(WarehouseModel::class, 'warehouse_id');
-    }
-
-    /**
-     * Relación muchos a muchos con el modelo CategoryModel.
-     *
-     * Un producto puede estar asociado con múltiples categorías.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    /*public function categories()
-    {
-        return $this->belongsToMany(CategoryModel::class, 'category_product', 'product_id', 'category_id');
-    }*/
-
-    /**
      * Relación muchos a muchos con el modelo OrderModel.
      *
      * Un producto puede estar asociado con múltiples órdenes.
@@ -62,5 +38,10 @@ class ProductModel extends Model
 
     public function category(){
         return $this->belongsTo(CategoryModel::class);
+    }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'product_id');
     }
 }

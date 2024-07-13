@@ -36,19 +36,12 @@ class ServiceModel extends Model
         return $this->belongsToMany(OrderModel::class, 'order_service', 'service_id', 'order_id');
     }
 
-    /**
-     * Relación muchos a muchos con el modelo WorkshopsModel.
-     *
-     * Un servicio puede estar asociado con múltiples talleres.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function workshops()
-    {
-        return $this->belongsToMany(WorkshopsModel::class, 'workshops_id');
-    }
-
     public function category(){
         return $this->belongsTo(CategoryModel::class);
+    }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class, 'service_id');
     }
 }

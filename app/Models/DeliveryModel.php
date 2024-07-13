@@ -49,14 +49,4 @@ class DeliveryModel extends Model
     {
         return $this->belongsTo(VehicleModel::class, 'vehicle_id');
     }
-
-    /**
-     * Define una relación de pertenencia con el modelo RoleModel.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    /*public function role()
-    {
-        return $this->belongsToMany(RoleModel::class, 'roles_deliveries', 'role_id', 'delivery_id');
-    }*/
 }

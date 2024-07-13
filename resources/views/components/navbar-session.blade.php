@@ -8,7 +8,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-light" aria-current="page" href="#">Ubicación</a>
+                    <a class="nav-link active text-light" aria-current="page" href="{{route('logout.customer')}}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Ubicación</a>
+                    <form id="logout-form" action="{{ route('logout.customer') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
             <form class="d-flex flex-grow-1 mx-lg-4 my-2 my-lg-0" role="search">
