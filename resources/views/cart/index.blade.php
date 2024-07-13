@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index carrito</title>
+    <title>Carrito de compras</title>
 </head>
 <body>
 <div class="container">
@@ -13,6 +13,28 @@
             {{ session('success') }}
         </div>
     @endif
+    <div>
+        <form action="{{route('confirm.order')}}" method="POST">
+            @csrf
+            <div>
+                <label for="">Fecha</label>
+                <input type="date" name="date" id="">
+            </div>
+            <div>
+                <label for="">Nombre</label>
+                <input type="text" name="name_customer" id="" value="{{Auth::user()->name}}">
+            </div>
+            <div>
+                <label for="">Dirección</label>
+                <input type="text" name="address" id="">
+            </div>
+            <div>
+                <label for="">Teléfono</label>
+                <input type="text" name="phone" id="" value="{{Auth::user()->phone}}">
+            </div>
+            <button type="submit"> Enviar orden</button>
+        </form>
+    </div>
     <table class="table">
         <thead>
             <tr>

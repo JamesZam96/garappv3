@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use App\Http\Services\DataServices;
 use App\Models\CategoryModel;
-use App\Models\Produc;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -37,12 +37,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->dataServices->getAll();
+        $products = Auth::user()->products()->with('category')->get();
         return view('products.index', compact('products'));
     }
 
     public function create(){
-        $categories = CategoryModel::all();
+        $categories = Auth::user()->categories;
         return view('products.create', compact('categories'));
     }
     /**
@@ -63,12 +63,9 @@ class ProductController extends Controller
             'price' => $request->price,
             'quantity' => $request->quantity,
             'image' => $productImagePath,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'user_id' => Auth::id()
         ]);
-        /*$product = $this->dataServices->update($id, $request->all());
-        if (!$product) {
-            abort(404, 'products not found');
-        }*/
         return redirect()->route('products.index');
     }
 
@@ -80,12 +77,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = $this->dataServices->getById($id);
+        $product = Auth::user()->products()->with('category')->findOrFail($id);
         return view('products.show', compact('product'));
     }
 
-    public function edit(ProductModel $product){
-        $categories = CategoryModel::all();
+    public function edit($id){
+        $product = Auth::user()->products()->findOrFail($id);
+        $categories = Auth::user()->categories;
         return view('products.edit', compact('product','categories'));
     }
     /**
@@ -99,7 +97,7 @@ class ProductController extends Controller
     {
 
         // Encontrar el producto por su ID
-        $product = ProductModel::findOrFail($id);
+        $product = Auth::user()->products()->findOrFail($id);
 
         // Manejar la actualización de la imagen
         if ($request->hasFile('image')) {
@@ -112,19 +110,17 @@ class ProductController extends Controller
             $productImg = $request->file('image');
             $productImage = "img_" . Str::uuid() . "." . $productImg->guessExtension();
             $productImagePath = $productImg->storeAs('uploads/productImage', $productImage, 'public');
-
-            // Actualizar el campo de imagen en el producto
-            $product->image = $productImagePath;
         }
 
-        // Actualizar los demás campos del producto
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
-        $product->category_id = $request->category_id;
-        $product->save();
-        /*$product = $this->dataServices->update($id, $request->all());*/
+        $productEdited = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $productImagePath,
+            'category_id' => $request->category_id,
+            'user_id' => Auth::id()
+        ];
+        $product->update($productEdited);
         if (!$product) {
             abort(404, 'products not found');
         }
@@ -139,7 +135,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = $this->dataServices->delete($id);
+        $product = Auth::user()->products()->findOrFail($id);
+        $product->delete();
         // Eliminar la imagen asociada si existe
         if ($product->image) {
             Storage::disk('public')->delete($product->image);

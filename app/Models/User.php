@@ -55,8 +55,24 @@ class User extends Authenticatable
         return $this->hasOne(CompanyModel::class, 'user_id');
     }
     
-    public function cartItems()
+    public function categories()
     {
-        return $this->hasMany(CartItem::class);
+        return $this->hasMany(CategoryModel::class);
     }
+
+    public function products()
+    {
+        return $this->hasMany(ProductModel::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(ServiceModel::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+    
 }

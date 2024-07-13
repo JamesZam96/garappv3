@@ -92,6 +92,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -104,8 +105,8 @@ return new class extends Migration
             $table->bigInteger('quantity');
             $table->string('image');
             $table->timestamps();
-            //$table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
 
         // Tabla pivote 'category_product'
@@ -128,20 +129,27 @@ return new class extends Migration
             $table->bigInteger('price');
             $table->string('image');
             $table->timestamps();
-            //$table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
 
         // Tabla 'orders'
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('state');
-            $table->integer('quantity');
-            $table->integer('unitprice');
-            $table->integer('subtotal');
+            $table->string('name_customer');
+            $table->string('address');
+            $table->string('phone');
+            $table->string('status')->default('in progress');
+            //$table->string('quantity');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->unsignedBigInteger('service_id')->nullable();
             $table->timestamps();
             // Definiendo claves foráneas
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
         });
 
         // Tabla pivote 'order_product'

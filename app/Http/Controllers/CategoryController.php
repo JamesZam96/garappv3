@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\DataServices;
-use App\Models\Category;
+use App\Models\User;
 use App\Models\CategoryModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -35,7 +36,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->dataServices->getAll();
+        $categories = Auth::user()->categories;
         return view('categories.index', compact('categories'));
     }
 
@@ -50,7 +51,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = $this->dataServices->create($request->all());
+        $category = CategoryModel::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'user_id' => Auth::id()
+        ]);
+
         return redirect()->route('categories.index');
     }
 
@@ -62,7 +68,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = $this->dataServices->getById($id);
+        $category = Auth::user()->categories()->findOrFail($id);
         return view('categories.show', compact('category'));
     }
 
@@ -72,8 +78,9 @@ class CategoryController extends Controller
      * @param  \App\Models\CategoryModel  $category
      * @return \Illuminate\View\View
      */
-    public function edit(CategoryModel $category)
+    public function edit($id)
     {
+        $category = Auth::user()->categories()->findOrFail($id);
         return view('categories.edit', compact('category'));
     }
 
@@ -86,7 +93,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = $this->dataServices->update($id, $request->all());
+        $category = Auth::user()->categories()->findOrFail($id);
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'user_id' => Auth::id()
+        ]);
         if (!$category) {
             abort(404, 'Category not found');
         }
@@ -101,7 +113,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->dataServices->delete($id);
+        $category = Auth::user()->categories()->findOrFail($id);
+        $category->delete();
         if (!$category) {
             abort(404, 'Category not found');
         }

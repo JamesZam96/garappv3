@@ -26,8 +26,12 @@ Route::post('login/customer', [LoginController::class, 'loginCustomer'])->name('
 Route::get('login/company', [LoginController::class, 'showLoginFormCompany'])->name('login.form.company');
 Route::post('login/company', [LoginController::class, 'loginCompany'])->name('login.company');
 
+
 // Logout empresa
 Route::post('/logout/company', [LoginController::class, 'logoutCompany'])->name('logout.company');
 
+
 // Logout customer
 Route::post('/logout/customer', [LoginController::class, 'logoutCustomer'])->name('logout.customer');
+
+
