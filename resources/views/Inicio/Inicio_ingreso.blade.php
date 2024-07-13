@@ -8,7 +8,7 @@
     <title>inicio</title>
 </head>
 <body>
-    <x-navbar />
+    <x-navbar-session />
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Talleres cerca de ti"></x-round-icon>
     <x-carousel />
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Almacenes cerca de ti"></x-round-icon>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('Inicio.Inicio_ingreso');
-});
+})->name('home.customer');
 
 Route::get('/ProductoServicioIngreso', function(){
     return view('Inicio.ProductoServicioIngreso');
