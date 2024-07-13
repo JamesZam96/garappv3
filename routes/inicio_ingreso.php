@@ -15,6 +15,4 @@ Route::get('/AlmacenIngreso', function(){
 Route::get('/TallerIngreso', function(){
     return view('Inicio.TallerIngreso');
 });
-Route::get('/CompraServicio', function(){
-    return view('InicioUsuario.CompraServicio');
-});
+

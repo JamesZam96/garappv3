@@ -25,3 +25,10 @@ Route::get('/ProductoServicioSession', function(){
 Route::get('/GestionPago', function(){
     return view('InicioUsuario.GestionPago');
 });
+Route::get('/CompraServicio', function(){
+    return view('InicioUsuario.CompraServicio');
+});
+
+Route::get('/PedidoConfirmado', function(){
+    return view('InicioUsuario.PedidoConfirmado');
+});

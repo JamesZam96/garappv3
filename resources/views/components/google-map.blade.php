@@ -10,7 +10,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; /* Esto hace que el contenedor ocupe toda la altura de la ventana */
+         /* Esto hace que el contenedor ocupe toda la altura de la ventana */
     }
     #map {
         height: 300px; /* Altura reducida */
