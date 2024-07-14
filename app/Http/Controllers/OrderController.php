@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\DataServices;
+use App\Models\Cart;
 use App\Models\OrderModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -96,5 +98,36 @@ class OrderController extends Controller
             abort(404, 'Order not found');
         }
         return redirect()->route('orders.index');
+    }
+
+    public function confirmOrder(Request $request){
+
+        $date = $request->date;
+        $name_customer = $request->name_customer;
+        $address = $request->address;
+        $phone = $request->phone;
+        $userid = Auth::user()->id;
+        $cart = Cart::where('user_id',$userid)->get();
+
+        foreach($cart as $carts){
+
+            $order = new OrderModel();
+            $order->date = $date;
+            $order->name_customer = $name_customer;
+            $order->address = $address;
+            $order->phone = $phone;
+            $order->user_id = $userid;
+            $order->product_id = $carts->product_id;
+            $order->service_id = $carts->service_id;
+            $order->save();
+        }
+
+        $cartRemove = Cart::where('user_id',$userid)->get();
+        foreach ($cartRemove as $remove) {
+            $data = Cart::find($remove->id);
+            $data->delete();
+        }
+        
+        return redirect()->back();
     }
 }

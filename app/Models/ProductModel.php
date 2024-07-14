@@ -40,8 +40,13 @@ class ProductModel extends Model
         return $this->belongsTo(CategoryModel::class);
     }
 
-    public function cartItems()
+    public function user()
     {
-        return $this->hasMany(CartItem::class, 'product_id');
+        return $this->belongsTo(User::class);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'product_id');
     }
 }

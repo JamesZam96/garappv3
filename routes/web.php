@@ -21,9 +21,11 @@ require __DIR__ . '/products.php';
 require __DIR__ . '/services.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/inicio.php';
-// require __DIR__ . '/inicio_usuario.php';
+require __DIR__ . '/inicio_usuario.php';
 
-
+Route::middleware(['customer.auth', 'role.customer'])->group(function(){
+    Route::post('/confirmorder',[OrderController::class,'confirmOrder'])->name('confirm.order');
+});
 
 
 

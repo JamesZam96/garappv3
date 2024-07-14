@@ -6,6 +6,7 @@ use App\Http\Services\DataServices;
 use App\Models\CategoryModel;
 use App\Models\ServiceModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -37,12 +38,12 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = $this->dataServices->getAll();
+        $services = Auth::user()->services()->with('category')->get();
         return view('servicess.index', compact('services'));
     }
 
     public function create(){
-        $categories = CategoryModel::all();
+        $categories = Auth::user()->categories;
         return view('servicess.create', compact('categories'));
     }
 
@@ -63,7 +64,8 @@ class ServiceController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'image' => $serviceImagePath,
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'user_id' => Auth::id()
         ]);
         return redirect()->route('services.index');
     }
@@ -76,12 +78,13 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service = $this->dataServices->getById($id);
+        $service = Auth::user()->services()->with('category')->findOrFail($id);
         return view('servicess.show', compact('service'));
     }
 
-    public function edit(ServiceModel $service){
-        $categories = CategoryModel::all();
+    public function edit($id){
+        $service = Auth::user()->services()->findOrFail($id);
+        $categories = Auth::user()->categories;
         return view('servicess.edit', compact('service','categories'));
     }
     /**
@@ -94,7 +97,7 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         // Encontrar el producto por su ID
-        $service = ServiceModel::findOrFail($id);
+        $service = Auth::user()->services()->findOrFail($id);
 
         // Manejar la actualización de la imagen
         if ($request->hasFile('image')) {
@@ -108,17 +111,18 @@ class ServiceController extends Controller
             $serviceImage = "img_" . Str::uuid() . "." . $serviceImg->guessExtension();
             $serviceImagePath = $serviceImg->storeAs('uploads/serviceImage', $serviceImage, 'public');
 
-            // Actualizar el campo de imagen en el producto
-            $service->image = $serviceImagePath;
         }
 
-        // Actualizar los demás campos del producto
-        $service->name = $request->name;
-        $service->description = $request->description;
-        $service->price = $request->price;
-        $service->category_id = $request->category_id;
-        $service->save();
-        /*$service = $this->dataServices->update($id, $request->all());*/
+        $serviceEdited = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $serviceImagePath,
+            'category_id' => $request->category_id,
+            'user_id' => Auth::id()
+        ];
+        
+        $service->update($serviceEdited);
         if (!$service) {
             abort(404, 'Service not found');
         }
@@ -133,7 +137,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = $this->dataServices->delete($id);
+        $service = Auth::user()->services()->findOrFail($id);
+        $service->delete();
         // Eliminar la imagen asociada si existe
         if ($service->image) {
             Storage::disk('public')->delete($service->image);

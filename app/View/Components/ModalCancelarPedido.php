@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class modal-pago extends Component
+class Modalcancelarpedido extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class modal-pago extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.modal-pago');
+        return view('components.modal-cancelar-pedido');
     }
 }

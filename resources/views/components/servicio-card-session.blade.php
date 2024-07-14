@@ -60,7 +60,7 @@ $cardServices = [
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <!--<button type="button" class="btn btn-danger">Confirmar</button>-->
-                            <form action="{{ route('cart.add') }}" method="POST">
+                            <form action="{{route('cart.add')}}" method="POST">
                                 @csrf
                                 <input type="hidden" name="service_id" value="{{ $cardService->id }}">
                                 <input type="hidden" name="quantity" value="1">
