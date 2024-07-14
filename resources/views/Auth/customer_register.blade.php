@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+        body{
+            background-color: #BFBFBF;
+        }
         .custom-form {
             background-color: #ffffff;
             transition: background-color 0.3s ease;
@@ -119,7 +122,7 @@
                             <!-- Botón Registrar -->
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">{{ __('Registrar') }}</button>
+                                    <button type="submit" class="btn btn-danger">{{ __('Registrar') }}</button>
                                 </div>
                             </div>
                         </form>

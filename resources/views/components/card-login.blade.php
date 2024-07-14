@@ -1,6 +1,6 @@
 <div class="text-center my-2">
-        <h1 class="text-black">Inicia sesión</h1>
-    </div>
+    <h1 class="text-black">Inicia sesión</h1>
+</div>
 <div class="d-flex justify-content-center">
     <div class="card w-75 my-3 rounded-2 border border-0">
         <div class="card-body d-flex flex-row p-0">
@@ -8,7 +8,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
-                        <h2 class="text-center my-3 text-black">Bienvenido</h2>
+                            <h2 class="text-center my-3 text-black">Bienvenido</h2>
                         </div>
                         <div class="col-md-8 text-center">
                             <h1 class="text-white">GARAPP</h1>
@@ -32,12 +32,11 @@
                                     <input type="password" id="password" name="password" class="form-control border border-black border-1 focus-ring" style="--bs-focus-ring-color: rgba(250, 61, 59, 0.25)" required>
                                 </div>
                                 <div class="row justify-content-center">
-                                    <button type="submit" class="btn btn-dark btn-block my-3 w-50 bg-black">Iniciar sesión</button>
+                                    <button type="submit" class="btn btn-dark btn-block my-3 w-50 bg-black custom-btn">Iniciar sesión</button>
                                 </div>
-                                
                             </form>
                             <div class="row justify-content-center">
-                                <a class="btn btn-dark w-50 my-3 bg-black" href="#"><span>Registrarse</span></a>
+                                <a class="btn btn-dark w-50 my-3 bg-black custom-btn" href="/register/customer"><span>Registrarse</span></a>
                             </div>
                         </div>
                     </div>
@@ -47,3 +46,14 @@
     </div>
 </div>
 
+<style>
+    .custom-btn {
+        transition: all 0.3s ease;
+    }
+    .custom-btn:hover {
+       
+        color: white !important;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+</style>

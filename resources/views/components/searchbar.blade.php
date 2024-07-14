@@ -34,6 +34,9 @@
 </div>
 
 <style>
+    body{
+            background-color: #BFBFBF;
+        }
     .dropdown {
         position: static;
     }
