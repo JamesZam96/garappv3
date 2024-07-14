@@ -8,12 +8,18 @@
     <title>Producto Servicio Ingreso</title>
 </head>
 <body>
-    <x-navbar />
+    <x-navbar-session />
+    <br>
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Productos disponibles"></x-round-icon>
+    <br>
     <x-product-card />
+    <br>
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Servicios disponibles"></x-round-icon>
+    <br>
     <x-servicio-card />
+    <br>
     <x-google-map :api-key="config('services.google.maps_api_key')" />
+    <br>
     <x-footer />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

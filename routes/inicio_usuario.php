@@ -16,6 +16,7 @@ Route::get('/TallerUsuario', function(){
 Route::get('/AlmacenSession', function(){
     return view('InicioUsuario.AlmacenSession');
 });
+
 Route::get('/ProductoServicioSession', function(){
     $products = ProductModel::all();
     $services = ServiceModel::all();

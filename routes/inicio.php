@@ -6,13 +6,14 @@ Route::get('/', function () {
     return view('Inicio.Inicio_ingreso');
 })->name('home.customer');
 
-Route::get('/ProductoServicioIngreso', function(){
+Route::get('/CategoriasyServivios', function(){
     return view('Inicio.ProductoServicioIngreso');
 });
-Route::get('/AlmacenIngreso', function(){
+Route::get('/Talleresyalmacenes', function(){
     return view('Inicio.AlmacenIngreso');
 });
-Route::get('/TallerIngreso', function(){
-    return view('Inicio.TallerIngreso');
-});
+
+// Route::get('/TallerIngreso', function(){
+//     return view('Inicio.TallerIngreso');
+// });
 

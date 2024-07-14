@@ -9,7 +9,8 @@
     <title>Document</title>
 </head>
 <body>
-    <x-navbar />
+    <x-navbar-session />
+    <br>
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Talleres"></x-round-icon>
     <x-carousel />
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Talleres cerca de ti"></x-round-icon>

@@ -9,9 +9,8 @@
                 <img src="{{ asset('icons/avatar.png') }}" width="32" height="32" alt="Icono de avatar" class="me-2">
                 <span class="text-black fs-5">{{ Auth::user()->name }}</span>
             </li>
-            <li><a class="dropdown-item fs-5" href="/ProductoServicioSession">Secciones</a></li>
-            <li><a class="dropdown-item fs-5" href="/AlmacenSession">Almacenes</a></li>
-            <li><a class="dropdown-item fs-5" href="/TallerIngreso">Talleres</a></li>
+            <li><a class="dropdown-item fs-5" href="/CategoriasyServivios">Productos y servicios</a></li>
+            <li><a class="dropdown-item fs-5" href="/Talleresyalmacenes">Talleres y almacenes</a></li>
             <br>
             <li><a class="dropdown-item fs-5" href="/register/company">Registrar almacén</a></li>
             <li><a class="dropdown-item fs-5" href="/register/company">Registrarse taller</a></li>
@@ -27,9 +26,8 @@
             </li>
         @else
             <li><a class="dropdown-item" href="/register/customer">Registrarse</a></li>
-            <li><a class="dropdown-item" href="/ProductoServicioIngreso">Secciones</a></li>
-            <li><a class="dropdown-item" href="/AlmacenIngreso">Almacenes</a></li>
-            <li><a class="dropdown-item" href="/TallerIngreso">Talleres</a></li>
+            <li><a class="dropdown-item" href="/CategoriasyServivios">Categorias y servicios</a></li>
+            <li><a class="dropdown-item" href="/Talleresyalmacenes">Talleres y almacenes</a></li>
         @endauth
         </ul>
     </div>
