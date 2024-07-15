@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-black">
-    <x-search-bar />
+    <x-searchbar />
     <div class="container-fluid">
         <a class="navbar-brand text-danger" href="/">Garapp</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,12 +22,14 @@
                         <li class="nav-item">
                             <span class="nav-link text-light">Bienvenido {{ Auth::user()->name }}</span>
                         </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('login.form.customer') }}">Iniciar sesión</a>
-                        </li>
                     @endif
-                @endauth    
+                @endauth
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ route('login.form.customer') }}">Iniciar sesión</a>
+                    </li>
+                @endguest
+                    
             </ul>
            
             <div class="d-flex align-items-center ms-3">
