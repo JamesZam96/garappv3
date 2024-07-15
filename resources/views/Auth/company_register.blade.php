@@ -193,6 +193,10 @@
                         <label for="pdf_legal_representative_dni">PDF DNI del Representante Legal</label>
                         <input type="file" name="pdf_legal_representative_dni" id="pdf_legal_representative_dni" class="form-control" accept="application/pdf" required>
                     </div>
+                    <div class="form-group">
+                        <label for="profile_photo">Foto de perfil</label>
+                        <input type="file" name="profile_photo" id="profile_photo" class="form-control" required>
+                    </div>
                     <button type="button" class="btn btn-secondary" onclick="prevStep()">Anterior</button>
                     <button type="button" class="btn btn-primary" onclick="nextStep()">Siguiente</button>
                 </div>

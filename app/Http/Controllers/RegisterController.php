@@ -72,6 +72,10 @@ class RegisterController extends Controller
         $lrd = "pdf_".Str::uuid().".".$pdfLrd->guessExtension();
         $lrdPath = $pdfLrd->storeAs('uploads/pdfs', $lrd, 'public');
 
+        $profileImg = $request->file('profile_photo');
+        $profileImage = "img_".Str::uuid().".".$profileImg->guessExtension();
+        $profileImagePath = $profileImg->storeAs('uploads/profileImage', $profileImage, 'public');
+
         $terms_and_conditions = $request->has('terms_and_conditions') ? true : false;
         $processing_of_personal_data = $request->has('processing_of_personal_data') ? true : false;
 
@@ -92,6 +96,7 @@ class RegisterController extends Controller
             'pdf_single_tax_registry' => $strPath,
             'pdf_bank_certificate' => $bcPath,
             'pdf_legal_representative_dni' => $lrdPath,
+            'profile_photo' => $profileImagePath,
 
             'account_holder_name' => $request->account_holder_name,
             'account_holder_lastname' => $request->account_holder_lastname,

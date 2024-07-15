@@ -10,13 +10,9 @@
 <body>
     <x-navbar-session />
     <br>
-    <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Talleres cerca de ti"></x-round-icon>
+    <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Almacenes y talleres cerca de ti"></x-round-icon>
     <br>
-    <x-carousel />
-    <br>
-    <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Almacenes cerca de ti"></x-round-icon>
-    <br>
-    <x-carusel-almacen-component />
+    <x-carousel :companies="$companies"/>
     <br>
     <x-round-icon icon="{{ asset('icons/llave-inglesa.png') }}" text="Los más elegidos"></x-round-icon>
     <br>

@@ -45,6 +45,7 @@ return new class extends Migration
             $table->string('pdf_single_tax_registry');
             $table->string('pdf_bank_certificate');
             $table->string('pdf_legal_representative_dni');
+            $table->string('profile_photo');
             
             $table->string('account_holder_name');
             $table->string('account_holder_lastname');
