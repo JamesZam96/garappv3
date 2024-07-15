@@ -3,19 +3,19 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
-class ServicioCard extends Component
+class OrdersTable extends Component
 {
-    public $services;
+    public $orders;
     /**
      * Create a new component instance.
      */
-    public function __construct($services)
+    public function __construct($orders)
     {
         //
-        $this->services = $services;
+        $this->orders = $orders;
     }
 
     /**
@@ -23,6 +23,6 @@ class ServicioCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.servicio-card');
+        return view('components.orders-table');
     }
 }

@@ -10,7 +10,7 @@
             <li class="nav-item dropdown position-absolute end-0 top-0 mt-4 me-4 me-lg-5">
                 <a class="nav-link dropdown-toggle primary-text fw-bold" href="#" id="navbarDropdown"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user me-2"></i>John Doe
+                    <i class="fas fa-user me-2"></i>{{ Auth::user()->company->company_name }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{{route('logout.company')}}"

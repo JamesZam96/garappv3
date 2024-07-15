@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -72,4 +73,5 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login.form.company');
     }
+
 }

@@ -10,23 +10,25 @@
                 <li class="nav-item">
                     <a class="nav-link active text-light" aria-current="page" href="#">Ubicación</a>
                 </li>
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ route('login.form.customer') }}">Iniciar sesión</a>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <span class="nav-link text-light">Bienvenido {{ Auth::user()->name }}</span>
-                    </li>
-                    <li class="nav-item">
-                       
-                    </li>
-                @endguest
+
             </ul>
             <form class="d-flex mx-lg-4 my-2 my-lg-0" role="search">
                 <input class="form-control form-control-sm me-2" type="search" placeholder="Buscar productos, servicios" aria-label="Search" style="min-width: 600px; max-width: 800px; width: 100%;">
                 <button class="btn btn-danger btn-sm" type="submit">Buscar</button>
             </form>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @auth
+                    @if (Auth::user()->hasRole('customer'))
+                        <li class="nav-item">
+                            <span class="nav-link text-light">Bienvenido {{ Auth::user()->name }}</span>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ route('login.form.customer') }}">Iniciar sesión</a>
+                        </li>
+                    @endif
+                @endauth    
+            </ul>
            
             <div class="d-flex align-items-center ms-3">
                 <a href="{{ route('cart.index') }}" class="text-light position-relative">

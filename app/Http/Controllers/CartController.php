@@ -6,6 +6,8 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\alert;
+
 class CartController extends Controller
 {
     //
@@ -17,7 +19,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'product_id' => 'nullable|exists:products,id',
             'service_id' => 'nullable|exists:services,id',
             'quantity' => 'required|integer|min:1',
@@ -30,7 +32,7 @@ class CartController extends Controller
                 ->first();
 
             if ($existingService) {
-                return redirect()->route('cart.index')->with('error', 'This service is already in your cart.');
+                return redirect()->back()->with('error', 'Este servicio ya está en tu carrito');
             }
         }
 
@@ -50,7 +52,45 @@ class CartController extends Controller
                 'service_id' => $request->service_id,
                 'quantity' => $request->quantity,
             ]);
+        }*/
+        $request->validate([
+            'product_id' => 'nullable|exists:products,id',
+            'service_id' => 'nullable|exists:services,id',
+            'quantity' => 'required|integer|min:1',
+        ]);
+    
+        // Verificar si el servicio ya está en el carrito
+        if ($request->service_id) {
+            $existingService = Cart::where('user_id', Auth::id())
+                ->where('service_id', $request->service_id)
+                ->first();
+    
+            if ($existingService) {
+                return redirect()->route('cart.index')->with('error', 'This service is already in your cart.');
+            }
         }
+    
+        // Verificar si el producto ya está en el carrito
+        if ($request->product_id) {
+            $existingProduct = Cart::where('user_id', Auth::id())
+                ->where('product_id', $request->product_id)
+                ->first();
+    
+            if ($existingProduct) {
+                $existingProduct->quantity += $request->quantity;
+                $existingProduct->save();
+                return redirect()->back()->with('success', 'Cantidad de producto actualizada');
+            }
+        }
+    
+        // Crear un nuevo item en el carrito
+        Cart::create([
+            'user_id' => Auth::id(),
+            'product_id' => $request->product_id,
+            'service_id' => $request->service_id,
+            'quantity' => $request->quantity,
+        ]);
+    
 
         //return redirect()->route('cart.index')->with('success', 'Item added to cart');
         return redirect()->back();
@@ -68,13 +108,13 @@ class CartController extends Controller
             $cartItem->delete();
         }
 
-        return redirect()->route('cart.index')->with('success', 'Item removed from cart');
+        return redirect()->route('cart.index')->with('success', 'Item eliminado del carrito');
     }
 
     public static function getCartItemCount()
     {
         $userId = Auth::id();
-        return Cart::where('user_id', $userId)->count();
+        return Cart::where('user_id', $userId)->sum('quantity');
     }
 
 }

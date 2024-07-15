@@ -5,13 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+Route::middleware(['company.auth', 'role.company'])->group(function(){
 Route::get('/admin', function () {
-    if (!Auth::user()->roles->contains('name', 'company')) {
-        return redirect()->route('login.form.company');
-    }
     return view('company.home');
-})->name('home.company')->middleware('company.auth');
+})->name('home.company');
+});
 
 
 require __DIR__ . '/vehicles.php';

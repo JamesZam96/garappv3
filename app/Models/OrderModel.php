@@ -31,21 +31,21 @@ class OrderModel extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function customer()
+    /*public function customer()
     {
         return $this->belongsTo(CustomerModel::class, 'customer_id');
-    }
+    }*/
 
     /**
      * Relación muchos a muchos con el modelo ProductModel.
      *
      * Un pedido puede tener muchos productos.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function products()
+    public function product()
     {
-        return $this->belongsToMany(ProductModel::class, 'order_product', 'order_id', 'product_id');
+        return $this->belongsTo(ProductModel::class);
     }
 
     /**
@@ -53,10 +53,14 @@ class OrderModel extends Model
      *
      * Un pedido puede tener muchos servicios.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function services()
+    public function service()
     {
-        return $this->belongsToMany(ServiceModel::class, 'order_service', 'order_id', 'service_id');
+        return $this->belongsTo(ServiceModel::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

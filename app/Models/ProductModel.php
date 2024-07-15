@@ -29,11 +29,11 @@ class ProductModel extends Model
      *
      * Un producto puede estar asociado con múltiples órdenes.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function orders()
     {
-        return $this->belongsToMany(OrderModel::class, 'order_product', 'product_id', 'order_id');
+        return $this->hasMany(OrderModel::class);
     }
 
     public function category(){

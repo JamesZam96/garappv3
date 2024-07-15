@@ -6,7 +6,7 @@ use App\Models\ServiceModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/InicioUsuario', function(){
+/*Route::get('/InicioUsuario', function(){
     return view('InicioUsuario.InicioUsuario');
 })->name('home.customer');
 
@@ -32,4 +32,4 @@ Route::get('/CompraServicio', function(){
 
 Route::get('/PedidoConfirmado', function(){
     return view('InicioUsuario.PedidoConfirmado');
-});
+});*/

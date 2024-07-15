@@ -75,4 +75,12 @@ class User extends Authenticatable
         return $this->hasMany(Cart::class);
     }
     
+    public function orders(){
+        return $this->hasMany(OrderModel::class);
+    }
+
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
 }

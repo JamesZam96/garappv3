@@ -1,4 +1,4 @@
-<h3 class="fs-4 mb-3">Nuevo producto</h3>
+<h3 class="fs-4 mb-3">Nuevo servicio</h3>
 <form action="{{route('services.store')}}" enctype="multipart/form-data" method="POST">
     @csrf
     <div class="row g-3 mb-5">

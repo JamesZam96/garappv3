@@ -43,8 +43,6 @@ class RegisterController extends Controller
 
         $customerRole = RoleModel::where('name', 'customer')->first();
         $user->roles()->attach($customerRole);
-        //$user->roles()->attach(1);
-        //Auth::login($user);
         Auth::login($user);
         
         return redirect()->route('home.customer')->with('status', 'Usuario registrado correctamente');

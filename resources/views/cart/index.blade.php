@@ -36,7 +36,7 @@
     <x-navbar-session />
     <br>
     <div class="container cart-container">
-        <h1 class="text-center mb-4">Shopping Cart</h1>
+        <h1 class="text-center mb-4">Tu carrito de compras</h1>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -61,8 +61,10 @@
                     <label for="phone" class="form-label">Teléfono</label>
                     <input type="text" class="form-control" name="phone" id="phone" value="{{Auth::user()->phone}}">
                 </div>
-                <button type="submit" class="btn btn-danger">Enviar orden</button>
+                <button type="submit" class="btn btn-danger">Hacer pedido</button>
+                <a class="btn btn-danger" href="/ProductosyServicios">Agregar más productos o servicios</a>
             </form>
+            
         </div>
         <table class="table table-dark table-striped">
             <thead>

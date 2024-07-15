@@ -110,7 +110,7 @@ return new class extends Migration
         });
 
         // Tabla pivote 'category_product'
-        Schema::create('category_product', function (Blueprint $table) {
+        /*Schema::create('category_product', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('category_id');
@@ -119,7 +119,7 @@ return new class extends Migration
             // Definiendo claves foráneas
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-        });
+        });*/
 
         // Tabla 'services'
         Schema::create('services', function (Blueprint $table) {
@@ -141,19 +141,21 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('status')->default('in progress');
-            //$table->string('quantity');
+            $table->string('quantity');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id')->nullable();
             $table->unsignedBigInteger('service_id')->nullable();
+            $table->unsignedBigInteger('company_id');
             $table->timestamps();
             // Definiendo claves foráneas
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->foreign('company_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         // Tabla pivote 'order_product'
-        Schema::create('order_product', function (Blueprint $table) {
+        /*Schema::create('order_product', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id')->nullable();
             $table->unsignedBigInteger('order_id')->nullable();
@@ -162,10 +164,10 @@ return new class extends Migration
             // Definiendo claves foráneas
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
-        });
+        });*/
 
         // Tabla pivote 'order_service'
-        Schema::create('order_service', function (Blueprint $table) {
+        /*Schema::create('order_service', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('service_id')->nullable();
             $table->unsignedBigInteger('order_id')->nullable();
@@ -174,7 +176,7 @@ return new class extends Migration
             // Definiendo claves foráneas
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
-        });
+        });*/
 
     }
 
@@ -190,9 +192,9 @@ return new class extends Migration
         Schema::dropIfExists('categories');
         Schema::dropIfExists('orders');
         Schema::dropIfExists('deliveries');
-        Schema::dropIfExists('category_product');
-        Schema::dropIfExists('order_product');
-        Schema::dropIfExists('order_service');
+        //Schema::dropIfExists('category_product');
+        //Schema::dropIfExists('order_product');
+        //Schema::dropIfExists('order_service');
         Schema::dropIfExists('roles');
         Schema::dropIfExists('companies');
         Schema::dropIfExists('locations');

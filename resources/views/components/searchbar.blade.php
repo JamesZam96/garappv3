@@ -5,30 +5,39 @@
         </button>
         <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
             @auth
-            <li class="dropdown-item">
-                <img src="{{ asset('icons/avatar.png') }}" width="32" height="32" alt="Icono de avatar" class="me-2">
-                <span class="text-black fs-5">{{ Auth::user()->name }}</span>
-            </li>
-            <li><a class="dropdown-item fs-5" href="/CategoriasyServivios">Productos y servicios</a></li>
-            <li><a class="dropdown-item fs-5" href="/Talleresyalmacenes">Talleres y almacenes</a></li>
-            <br>
-            <li><a class="dropdown-item fs-5" href="/register/company">Registrar almacén</a></li>
-            <li><a class="dropdown-item fs-5" href="/register/company">Registrarse taller</a></li>
-            <li><a class="dropdown-item fs-5" href="/register/delivery">Quiero ser domiciliario</a></li>
-            <li>
-                <form action="{{ route('logout.customer') }}" method="POST" class="dropdown-item">
-                    @csrf
-                    <button type="submit" class="btn btn-link p-0 fs-5">
-                        <img src="{{ asset('icons/cerrar.png') }}" width="32" height="32" alt="Icono de cerrar sesión" class="me-2">
-                        Cerrar sesión
-                    </button>
-                </form>
-            </li>
-        @else
-            <li><a class="dropdown-item" href="/register/customer">Registrarse</a></li>
-            <li><a class="dropdown-item" href="/CategoriasyServivios">Categorias y servicios</a></li>
-            <li><a class="dropdown-item" href="/Talleresyalmacenes">Talleres y almacenes</a></li>
-        @endauth
+                @if (Auth::user()->hasRole('customer'))
+                    <li class="dropdown-item">
+                        <img src="{{ asset('icons/avatar.png') }}" width="24" height="24" alt="Icono de avatar" class="me-2">
+                        <span class="text-black">{{ Auth::user()->name }}</span>
+                    </li>
+                    <li><a class="dropdown-item" href="/ProductosyServicios">Productos y servicios</a></li>
+                    <li><a class="dropdown-item" href="/Talleresyalmacenes">Talleres y almacenes</a></li>
+                    <br>
+                    <li><a class="dropdown-item" href="/register/company">Registrar como almacén</a></li>
+                    <li><a class="dropdown-item" href="/register/company">Registrarse como taller</a></li>
+                    <li><a class="dropdown-item" href="/register/delivery">Quiero ser domiciliario</a></li>
+                    <li class="dropdown-item">
+                        <form action="{{ route('logout.customer') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-link p-0">
+                                <img src="{{ asset('icons/cerrar.png') }}" width="24" height="24" alt="Icono de cerrar sesión" class="me-2">
+                                Cerrar sesión
+                            </button>
+                        </form>
+                    </li>
+                @else
+                    <li><a class="dropdown-item" href="/register/customer">Registrarse</a></li>
+                    <li><a class="dropdown-item" href="/ProductosyServicios">Productos y servicios</a></li>
+                    <li><a class="dropdown-item" href="/Talleresyalmacenes">Talleres y almacenes</a></li>
+                    <br>
+                    <li><a class="dropdown-item" href="/register/company">Registrarse como almacén</a></li>
+                    <li><a class="dropdown-item" href="/register/company">Registrarse como taller</a></li>
+                    <li><a class="dropdown-item" href="/register/delivery">Quiero ser domiciliario</a></li>
+                @endif
+            @endauth
+            
+                
+            
         </ul>
     </div>
 </div>
