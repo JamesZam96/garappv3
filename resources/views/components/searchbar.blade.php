@@ -34,14 +34,19 @@
                     <li><a class="dropdown-item" href="/register/company">Registrarse como taller</a></li>
                     <li><a class="dropdown-item" href="/register/delivery">Quiero ser domiciliario</a></li>
                 @endif
+            @else
+                <li><a class="dropdown-item" href="/login/customer">Iniciar sesión</a></li>
+                <li><a class="dropdown-item" href="/register/customer">Registrarse</a></li>
+                <li><a class="dropdown-item" href="/ProductosyServicios">Productos y servicios</a></li>
+                <li><a class="dropdown-item" href="/Talleresyalmacenes">Talleres y almacenes</a></li>
+                <br>
+                <li><a class="dropdown-item" href="/register/company">Registrarse como almacén</a></li>
+                <li><a class="dropdown-item" href="/register/company">Registrarse como taller</a></li>
+                <li><a class="dropdown-item" href="/register/delivery">Quiero ser domiciliario</a></li>
             @endauth
-            
-                
-            
         </ul>
     </div>
 </div>
-
 <style>
     body{
             background-color: #BFBFBF;
