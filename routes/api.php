@@ -27,28 +27,28 @@ Route::middleware(['company.auth', 'role.company','auth:sanctum'])->group(functi
     Route::post('/logout/company', [LoginApiController::class, 'logoutCompany']);
 
     //Rutas categories
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-    Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
-    Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index.api');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store.api');
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit.api');
+    Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show.api');
+    Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update.api');
+    Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy.api');
 
     //Rutas products
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-    Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update');
-    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index.api');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store.api');
+    Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show.api');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit.api');
+    Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update.api');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy.api');
     
     //Rutas services
-    Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-    Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
-    Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
-    Route::get('/services/{service}/edit', [ServiceController::class, 'edit'])->name('services.edit');
-    Route::patch('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
-    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+    Route::get('/services', [ServiceController::class, 'index'])->name('services.index.api');
+    Route::post('/services', [ServiceController::class, 'store'])->name('services.store.api');
+    Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show.api');
+    Route::get('/services/{service}/edit', [ServiceController::class, 'edit'])->name('services.edit.api');
+    Route::patch('/services/{service}', [ServiceController::class, 'update'])->name('services.update.api');
+    Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy.api');
 });
 
 
