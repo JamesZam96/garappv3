@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="{{ asset('css/sidebar-company.css') }}">
+<!--<link rel="stylesheet" href="{{ asset('css/sidebar-company.css') }}">-->
+<link rel="stylesheet" href="https://github.com/JamesZam96/garappv3/blob/main/public/css/sidebar-company.css">
 <nav class="navbar navbar-expand-lg navbar-light py-4 px-4 bg-transparent">
     <div class="d-flex align-items-center">
         <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
