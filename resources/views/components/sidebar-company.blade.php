@@ -1,5 +1,4 @@
-<!--<link rel="stylesheet" href="{{ asset('css/sidebar-company.css') }}">-->
-<link rel="stylesheet" href="https://github.com/JamesZam96/garappv3/blob/main/public/css/sidebar-company.css">
+<link rel="stylesheet" href="{{ asset('css/sidebar-company.css') }}">
 <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-white" id="sidebar-wrapper">
