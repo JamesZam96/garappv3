@@ -28,10 +28,6 @@ class LoginController extends Controller
             $user = Auth::user();
             if ($user->roles->contains('name','customer')){
                 $request->session()->regenerate();
-                // Retornar JSON si se espera una respuesta JSON
-                if ($request->wantsJson()) {
-                    return response()->json(['message' => 'Login successful']);
-                }
                 return redirect()->route('home.customer');
             }else{
                 Auth::logout();

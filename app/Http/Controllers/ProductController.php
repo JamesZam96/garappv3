@@ -38,6 +38,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = Auth::user()->products()->with('category')->get();
+        if (request()->expectsJson()){
+            return response()->json([
+                'products' => $products
+            ]);
+        }
         return view('products.index', compact('products'));
     }
 
@@ -66,6 +71,14 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'user_id' => Auth::id()
         ]);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'product_created',
+                'product' => $product
+            ]);
+        }
+
         return redirect()->route('products.index');
     }
 
@@ -78,12 +91,26 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Auth::user()->products()->with('category')->findOrFail($id);
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'product' => $product
+            ]);
+        }
+
         return view('products.show', compact('product'));
     }
 
     public function edit($id){
         $product = Auth::user()->products()->findOrFail($id);
         $categories = Auth::user()->categories;
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'product' => $product
+            ]);
+        }
+
         return view('products.edit', compact('product','categories'));
     }
     /**
@@ -121,6 +148,14 @@ class ProductController extends Controller
             'user_id' => Auth::id()
         ];
         $product->update($productEdited);
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => 'product_updated',
+                'product' => $product
+            ]);
+        }
+
         if (!$product) {
             abort(404, 'products not found');
         }
@@ -141,6 +176,14 @@ class ProductController extends Controller
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => 'product_deleted',
+                'product' => $product
+            ]);
+        }
+
         if (!$product) {
             abort(404, 'Product not found');
         }
