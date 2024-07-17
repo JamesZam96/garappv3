@@ -26,6 +26,7 @@
                         </form>
                     </li>
                 @else
+                    <li><a class="dropdown-item" href="/login/customer">Iniciar sesión</a></li>
                     <li><a class="dropdown-item" href="/register/customer">Registrarse</a></li>
                     <li><a class="dropdown-item" href="/ProductosyServicios">Productos y servicios</a></li>
                     <li><a class="dropdown-item" href="/Talleresyalmacenes">Talleres y almacenes</a></li>

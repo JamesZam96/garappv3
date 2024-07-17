@@ -1,13 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\CompanyModel;
 use App\Models\ProductModel;
 use App\Models\ServiceModel;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('Inicio.Inicio_ingreso');
+    $companies = CompanyModel::all();
+    return view('Inicio.Inicio_ingreso', compact('companies'));
 })->name('home.customer');
 
 Route::get('/ProductosyServicios', function(){
@@ -16,7 +18,8 @@ Route::get('/ProductosyServicios', function(){
     return view('Inicio.ProductoServicioIngreso', compact('products','services'));
 });
 Route::get('/Talleresyalmacenes', function(){
-    return view('Inicio.AlmacenIngreso');
+    $companies = CompanyModel::all();
+    return view('Inicio.AlmacenIngreso', compact('companies'));
 });
 
 // Route::get('/TallerIngreso', function(){

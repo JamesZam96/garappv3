@@ -8,12 +8,14 @@ use Illuminate\View\Component;
 
 class Carousel extends Component
 {
+    public $companies;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($companies)
     {
         //
+        $this->companies = $companies;
     }
 
     /**

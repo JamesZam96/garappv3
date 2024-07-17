@@ -17,17 +17,17 @@ class RegisterController extends Controller
 
     public function showRegistrationFormCustomer()
     {
-        return view('auth.customer_register');
+        return view('Auth.customer_register');
     }
 
     public function showRegistrationFormCompany()
     {
-        return view('auth.company_register');
+        return view('Auth.company_register');
     }
 
     public function showRegistrationFormDelivery()
     {
-        return view('auth.delivery_register');
+        return view('Auth.delivery_register');
     }
 
     public function createCustomer(Request $request)
@@ -44,6 +44,14 @@ class RegisterController extends Controller
         $customerRole = RoleModel::where('name', 'customer')->first();
         $user->roles()->attach($customerRole);
         Auth::login($user);
+
+        // Retornar JSON si se espera una respuesta JSON
+        if ($request->wantsJson()) {
+            return response()->json([
+                'status' => 'Usuario resgistrado correctamente',
+                'user' => $user,
+            ], 201);
+        }
         
         return redirect()->route('home.customer')->with('status', 'Usuario registrado correctamente');
 
@@ -72,6 +80,10 @@ class RegisterController extends Controller
         $lrd = "pdf_".Str::uuid().".".$pdfLrd->guessExtension();
         $lrdPath = $pdfLrd->storeAs('uploads/pdfs', $lrd, 'public');
 
+        $profileImg = $request->file('profile_photo');
+        $profileImage = "img_".Str::uuid().".".$profileImg->guessExtension();
+        $profileImagePath = $profileImg->storeAs('uploads/profileImage', $profileImage, 'public');
+
         $terms_and_conditions = $request->has('terms_and_conditions') ? true : false;
         $processing_of_personal_data = $request->has('processing_of_personal_data') ? true : false;
 
@@ -92,6 +104,7 @@ class RegisterController extends Controller
             'pdf_single_tax_registry' => $strPath,
             'pdf_bank_certificate' => $bcPath,
             'pdf_legal_representative_dni' => $lrdPath,
+            'profile_photo' => $profileImagePath,
 
             'account_holder_name' => $request->account_holder_name,
             'account_holder_lastname' => $request->account_holder_lastname,

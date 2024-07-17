@@ -11,12 +11,12 @@ class LoginController extends Controller
     //
     public function showLoginFormCustomer()
     {
-        return view('auth.customer_login');
+        return view('Auth.customer_login');
     }
     
     public function showLoginFormCompany()
     {
-        return view('auth.company_login');
+        return view('Auth.company_login');
     }
 
     public function loginCustomer(Request $request)
@@ -28,6 +28,10 @@ class LoginController extends Controller
             $user = Auth::user();
             if ($user->roles->contains('name','customer')){
                 $request->session()->regenerate();
+                // Retornar JSON si se espera una respuesta JSON
+                if ($request->wantsJson()) {
+                    return response()->json(['message' => 'Login successful']);
+                }
                 return redirect()->route('home.customer');
             }else{
                 Auth::logout();
@@ -35,6 +39,8 @@ class LoginController extends Controller
             }
             
         }
+
+        
 
         return back()->withErrors(['email' => 'The provided credentials do not match our records.',]);
     }
@@ -63,6 +69,14 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        // Retornar JSON si se espera una respuesta JSON
+        if ($request->wantsJson()) {
+            return response()->json([
+                'status' => 'logout correcto'
+            ], 201);
+        }
+
         return redirect()->route('login.form.customer');
     }
 
