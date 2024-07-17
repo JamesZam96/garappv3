@@ -15,8 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'company.auth' => \App\Http\Middleware\RedirectIfNotAuthenticatedCompany::class,
             'customer.auth' => \App\Http\Middleware\RedirectIfNotAuthenticatedCustomer::class,
+            'delivery.auth' => \App\Http\Middleware\RedirectIfNotAuthenticatedDelivery::class,
             'role.customer' => \App\Http\Middleware\RoleMiddlewareCustomer::class,
-            'role.company' => \App\Http\Middleware\RoleMiddlewareCompany::class
+            'role.company' => \App\Http\Middleware\RoleMiddlewareCompany::class,
+            'role.delivery' => \App\Http\Middleware\RoleMiddlewareDelivery::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

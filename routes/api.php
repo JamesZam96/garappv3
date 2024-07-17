@@ -16,11 +16,12 @@ Route::get('/student', function () {
 // Registro company y customer
 Route::post('/register/customer', [RegisterController::class, 'createCustomer']);
 Route::post('/register/company', [RegisterController::class, 'createCompany']);
+Route::post('/register/delivery', [RegisterController::class, 'createDelivery']);
 
 // Login company y customer
 Route::post('/login/customer', [LoginApiController::class, 'loginCustomer']);
 Route::post('/login/company', [LoginApiController::class, 'loginCompany']);
-
+Route::post('/login/delivery', [LoginApiController::class, 'loginDelivery']);
 
 Route::middleware(['company.auth', 'role.company','auth:sanctum'])->group(function(){
     //Logout company
@@ -49,6 +50,10 @@ Route::middleware(['company.auth', 'role.company','auth:sanctum'])->group(functi
     Route::get('/services/{service}/edit', [ServiceController::class, 'edit'])->name('services.edit.api');
     Route::patch('/services/{service}', [ServiceController::class, 'update'])->name('services.update.api');
     Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy.api');
+});
+
+Route::middleware(['delivery.auth', 'role.delivery','auth:sanctum'])->group(function(){
+    Route::post('/logout/delivery', [LoginApiController::class, 'logoutDelivery']);
 });
 
 
