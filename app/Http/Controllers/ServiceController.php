@@ -39,6 +39,11 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Auth::user()->services()->with('category')->get();
+        if (request()->expectsJson()){
+            return response()->json([
+                'services' => $services
+            ]);
+        }
         return view('servicess.index', compact('services'));
     }
 
@@ -67,6 +72,14 @@ class ServiceController extends Controller
             'category_id' => $request->category_id,
             'user_id' => Auth::id()
         ]);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'service_created',
+                'service' => $service
+            ]);
+        }
+
         return redirect()->route('services.index');
     }
 
@@ -79,12 +92,24 @@ class ServiceController extends Controller
     public function show($id)
     {
         $service = Auth::user()->services()->with('category')->findOrFail($id);
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'service' => $service
+            ]);
+        }
+
         return view('servicess.show', compact('service'));
     }
 
     public function edit($id){
         $service = Auth::user()->services()->findOrFail($id);
         $categories = Auth::user()->categories;
+        if (request()->expectsJson()) {
+            return response()->json([
+                'service' => $service
+            ]);
+        }
         return view('servicess.edit', compact('service','categories'));
     }
     /**
@@ -123,6 +148,14 @@ class ServiceController extends Controller
         ];
         
         $service->update($serviceEdited);
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => 'service_updated',
+                'service' => $service
+            ]);
+        }
+
         if (!$service) {
             abort(404, 'Service not found');
         }
@@ -143,6 +176,14 @@ class ServiceController extends Controller
         if ($service->image) {
             Storage::disk('public')->delete($service->image);
         }
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'message' => 'service_deleted',
+                'service' => $service
+            ]);
+        }
+
         if (!$service) {
             abort(404, 'Service not found');
         }

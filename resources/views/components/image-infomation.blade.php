@@ -4,17 +4,19 @@ $cards = [
         'image' => asset('img/taller-1.jpg'),
         'title' => 'Registra tu taller',
         'description' => 'Trabajan con Garapp',
+        'link' => '/register/company'
     ],
     [
         'image' => asset('img/almacen.jfif'),
         'title' => 'Registra tu almacén',
         'description' => 'Disfrute de una logística inmediata',
+        'link' => '/register/company'
     ],
     [
         'image' => asset('img/repartidor.jfif'),
         'title' => '¡Únete como conductor de entrega!',
-        'description' => 'Gana dinero extra entregando paquetes,
- tenemos las mejores tarifas y beneficios.',
+        'description' => 'Gana dinero extra entregando paquetes, tenemos las mejores tarifas y beneficios.',
+        'link' => '/register/delivery'
     ],
 ];
 @endphp
@@ -30,7 +32,7 @@ $cards = [
                             <div class="card-body bg-dark p-2">
                                 <h6 class="card-title mb-1 text-danger">{{ $card['title'] }}</h6>
                                 <p class="card-text small mb-2 text-white">{{ $card['description'] }}</p>
-                                <a href="#" class="btn btn-danger btn-sm">Trabaja con Garapp</a>
+                                <a href="{{ $card['link'] }}" class="btn btn-danger btn-sm">Trabaja con Garapp</a>
                             </div>
                         </div>
                     </div>

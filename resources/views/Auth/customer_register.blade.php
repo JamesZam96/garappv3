@@ -22,16 +22,35 @@
             outline: 0;
             box-shadow: 0 0 0 0.2rem rgba(245, 1, 25, 0.25);
         }
+        @media (max-width: 767px) {
+            .form-group.row {
+                margin-right: 0;
+                margin-left: 0;
+            }
+            .form-group.row .col-form-label {
+                text-align: left;
+                padding-bottom: 0;
+            }
+            .form-group.row .col-md-6 {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .bg-dark {
+                margin-top: 20px;
+                border-radius: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-4">
         <div class="row justify-content-center w-100">
             <div class="col-md-8 col-lg-6">
                 <div class="card shadow-lg custom-form">
-                    <div class="card-body p-5">
+                    <div class="card-body p-4">
                         <h2 class="text-center mb-4">CREA TU CUENTA</h2>
                         <form method="POST" action="{{ route('register.customer.submit') }}">
+                            @csrf
                             @csrf
                             <!-- Nombre -->
                             <div class="form-group row">
@@ -129,8 +148,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-5 bg-dark text-white p-4 d-flex flex-column justify-content-center align-items-center">
-                <h1 class="mb-4 display-1">GARAPP</h1>
+            <div class="col-md-4 col-lg-5 bg-dark text-white p-4 d-flex flex-column justify-content-center align-items-center mt-3 mt-md-0">
+                <h1 class="mb-4 display-4">GARAPP</h1>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['company.auth', 'role.company'])->group(function(){
 Route::get('/admin', function () {
-    return view('company.home');
+    return view('company.home');  
 })->name('home.company');
 });
 

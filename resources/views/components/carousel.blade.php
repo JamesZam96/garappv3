@@ -1,37 +1,3 @@
-@php
-$cards = [
-    [
-        'image' => asset('img/image1.jfif'),
-        'title' => 'Ford',
-        'description' => 'Reparación y mantenimiento de vehículos Ford.',
-        'long_description' => 'Nuestro taller especializado en Ford ofrece servicios de alta calidad para todos los modelos de la marca. Contamos con técnicos certificados por Ford y utilizamos equipos de diagnóstico de última generación. Realizamos desde mantenimientos preventivos hasta reparaciones complejas, garantizando siempre el uso de repuestos originales. Con más de 20 años de experiencia, somos expertos en motores EcoBoost, sistemas de transmisión y electrónica avanzada de Ford.',
-    ],
-    [
-        'image' => asset('img/image2.jfif'),
-        'title' => 'Audi',
-        'description' => 'Servicio completo para autos Audi.',
-        'long_description' => 'Como especialistas en Audi, ofrecemos un servicio integral que abarca desde la más mínima revisión hasta las reparaciones más complejas. Nuestro personal altamente capacitado recibe formación continua directamente de Audi para mantenerse al día con las últimas tecnologías. Contamos con herramientas especializadas para diagnóstico y reparación de sistemas Quattro, motores TFSI y TSI, así como para la calibración de sistemas de asistencia al conductor (ADAS).',
-    ],
-    [
-        'image' => asset('img/image3.jfif'),
-        'title' => 'Yamaha',
-        'description' => 'Especialistas en motocicletas Yamaha.',
-        'long_description' => 'Nuestro taller es el paraíso para los amantes de las motocicletas Yamaha. Ofrecemos servicios de mantenimiento, reparación y personalización para todos los modelos, desde scooters urbanas hasta potentes motos deportivas. Nuestros mecánicos son apasionados de las dos ruedas y cuentan con certificación Yamaha. Además de reparaciones, ofrecemos servicios de optimización de rendimiento, instalación de accesorios y preparación para competiciones.',
-    ],
-    [
-        'image' => asset('img/image4.jfif'),
-        'title' => 'Mercedes',
-        'description' => 'Mantenimiento y reparación de autos Mercedes.',
-        'long_description' => 'En nuestro taller Mercedes-Benz, la excelencia es nuestra norma. Ofrecemos un servicio premium para todos los modelos de la estrella, desde los clásicos hasta los más recientes. Nuestros técnicos reciben formación continua directamente de la fábrica y utilizamos equipos de diagnóstico especializados Star Diagnosis. Somos expertos en sistemas MBUX, reparación de transmisiones automáticas y calibración de sistemas de seguridad. También ofrecemos servicios de restauración para vehículos clásicos Mercedes.',
-    ],
-    [
-        'image' => asset('img/image5.jfif'),
-        'title' => 'Chevrolet',
-        'description' => 'Taller especializado en vehículos Chevrolet.',
-        'long_description' => 'Como taller autorizado Chevrolet, ofrecemos una atención integral para tu vehículo. Desde cambios de aceite hasta reparaciones mayores, nuestro equipo de profesionales está preparado para cualquier desafío. Utilizamos herramientas y equipos certificados por GM para garantizar que tu Chevrolet reciba el mejor cuidado posible. Somos especialistas en sistemas de inyección, diagnóstico de centralitas y reparación de cajas automáticas. También ofrecemos asesoramiento personalizado sobre el mantenimiento de tu vehículo y programas de fidelidad para nuestros clientes frecuentes.',
-    ],
-];
-@endphp
 
 <div class="container-fluid">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
@@ -70,7 +36,7 @@ $cards = [
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <a href="/ProductoServicioIngreso" class="btn btn-danger">Ver más</a>
+                            <a href="/ProductosyServicios" class="btn btn-danger">Pedir</a>
                         </div>
                     </div>
                 </div>
