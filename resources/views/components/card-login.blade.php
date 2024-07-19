@@ -1,44 +1,26 @@
-<div class="text-center my-2">
-    <h1 class="text-black">Inicia sesión</h1>
-</div>
-<div class="d-flex justify-content-center">
-    <div class="card w-75 my-3 rounded-2 border border-0">
-        <div class="card-body d-flex flex-row p-0">
-            <div class="p-2 w-50 rounded-start-2" style="background-color:rgba(250, 61, 59, 0.7);">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <h2 class="text-center my-3 text-black">Bienvenido</h2>
-                        </div>
-                        <div class="col-md-8 text-center">
-                            <h1 class="text-white">GARAPP</h1>
-                        </div>
+<div class="container-fluid p-3">
+    <h1 class="text-center mb-4">Inicia sesión</h1>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-md-6 bg-danger bg-opacity-50 text-center py-4">
+                        <h2 class="text-black mb-3">Bienvenido</h2>
+                        <h1 class="text-white">GARAPP</h1>
                     </div>
-                </div>
-            </div>
-            <div class="p-2 w-50 rounded-end-2">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <h2 class="text-center my-3 text-black">Accede a tu cuenta</h2>
-                            <form method="POST" action="{{ route('login.customer') }}">
-                                @csrf
-                                <div class="form-group my-3">
-                                    <label for="email">Correo electrónico</label>
-                                    <input type="email" id="email" name="email" class="form-control border border-black border-1 focus-ring" style="--bs-focus-ring-color: rgba(250, 61, 59, 0.25)" required>
-                                </div>
-                                <div class="form-group my-3">
-                                    <label for="password">Contraseña</label>
-                                    <input type="password" id="password" name="password" class="form-control border border-black border-1 focus-ring" style="--bs-focus-ring-color: rgba(250, 61, 59, 0.25)" required>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <button type="submit" class="btn btn-dark btn-block my-3 w-50 bg-black custom-btn">Iniciar sesión</button>
-                                </div>
-                            </form>
-                            <div class="row justify-content-center">
-                                <a class="btn btn-dark w-50 my-3 bg-black custom-btn" href="/register/customer"><span>Registrarse</span></a>
+                    <div class="col-md-6 p-4">
+                        <h2 class="text-center mb-4">Accede a tu cuenta</h2>
+                        <form method="POST" action="{{ route('login.customer') }}">
+                            @csrf
+                            <div class="mb-3">
+                                <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                             </div>
-                        </div>
+                            <div class="mb-3">
+                                <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark w-100 mb-3">Iniciar sesión</button>
+                        </form>
+                        <a href="/register/customer" class="btn btn-outline-dark w-100">Registrarse</a>
                     </div>
                 </div>
             </div>
@@ -47,12 +29,15 @@
 </div>
 
 <style>
-    .custom-btn {
+    @media (max-width: 767px) {
+        .card .row > div {
+            border-radius: 0.25rem;
+        }
+    }
+    .btn {
         transition: all 0.3s ease;
     }
-    .custom-btn:hover {
-       
-        color: white !important;
+    .btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }

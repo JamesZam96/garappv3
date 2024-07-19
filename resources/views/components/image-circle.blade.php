@@ -3,22 +3,22 @@ $imageLinks = [
     [
         'url' => asset('img/taller1.jfif'),
         'alt' => 'Descripción 1',
-        'link' => 'https://ejemplo.com/pagina1'
+        'link' => '/ProductosyServicios'
     ],
     [
         'url' =>  asset('img/taller2.jfif'),
         'alt' => 'Descripción 2',
-        'link' => 'https://ejemplo.com/pagina2'
+        'link' => '/ProductosyServicios'
     ],
     [
         'url' =>  asset('img/image3.jfif'),
         'alt' => 'Descripción 3',
-        'link' => 'https://ejemplo.com/pagina3'
+        'link' => '/ProductosyServicios'
     ],
     [
         'url' =>  asset('img/image4.jfif'),
         'alt' => 'Descripción 4',
-        'link' => 'https://ejemplo.com/pagina4'
+        'link' => '/ProductosyServicios'
     ],
 ];
 @endphp
