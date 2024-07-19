@@ -52,7 +52,7 @@ Route::middleware(['company.auth', 'role.company','auth:sanctum'])->group(functi
     Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy.api');
 });
 
-Route::middleware(['delivery.auth', 'role.delivery','auth:sanctum'])->group(function(){
+Route::middleware(['delivery.auth', 'role.delivery'])->group(function(){
     Route::post('/logout/delivery', [LoginApiController::class, 'logoutDelivery']);
 });
 
